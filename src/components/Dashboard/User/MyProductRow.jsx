@@ -1,6 +1,11 @@
+/* eslint-disable react/prop-types */
 
+import Swal from "sweetalert2";
 import UseAxiosSecure from "../../../hooks/useAxiosSecure";
-import toast from "react-hot-toast";
+import { RiDeleteBinLine } from "react-icons/ri";
+import { FaEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 
 const MyProductRow = ({ productData, refetch }) => {
     console.log(productData);
@@ -10,18 +15,33 @@ const MyProductRow = ({ productData, refetch }) => {
     const { productName, upvoteCount, _id, status } =
     productData
        // handle order delete/cancellation
-    const handleDelete = async () => {
-      try {
-        //fetch delete request
-        await axiosSecure.delete(`/products/${_id}`)
-       
-        // call refetch to refresh ui(fetch products data again)
-        refetch()
-        toast.success('Order Cancelled.')
-      } catch (err) {
-        console.log(err)
-        toast.error(err.response.data)
-      } 
+       const handleDelete=id=>{
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/products/${id}`)
+                .then(res=>{
+                   if(res.data.deletedCount>0){
+              refetch()
+
+   Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+              });
+                   }
+                    
+                })
+           
+            }
+          });
     }
     return (
         <tr>
@@ -39,23 +59,18 @@ const MyProductRow = ({ productData, refetch }) => {
           <p className='text-gray-900 whitespace-no-wrap'>{status}</p>
         </td>
         <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+        <Link to={`/dashboard/updateProduct/${_id}`}>
           <button
            
-            className='relative disabled:cursor-not-allowed cursor-pointer inline-block px-3 py-1 font-semibold text-lime-900 leading-tight'
-          >
-            <span className='absolute cursor-pointer inset-0 bg-red-200 opacity-50 rounded-full'></span>
-            <span className='relative cursor-pointer'>Update</span>
+           className="btn btn-ghost btn-lg text-[#1cb943]"><FaEdit/>
           </button>
-    
+    </Link>
          
           </td>
         <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
           <button
-           onClick={handleDelete}
-            className='relative disabled:cursor-not-allowed cursor-pointer inline-block px-3 py-1 font-semibold text-lime-900 leading-tight'
-          >
-            <span className='absolute cursor-pointer inset-0 bg-red-200 opacity-50 rounded-full'></span>
-            <span className='relative cursor-pointer'>Delete</span>
+           onClick={() => handleDelete(_id)}
+           className="btn btn-ghost btn-lg text-[#B91C1C]"><RiDeleteBinLine />
           </button>
     
          

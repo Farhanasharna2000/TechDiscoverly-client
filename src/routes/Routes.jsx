@@ -8,6 +8,8 @@ import SignUp from './../pages/SignUp/SignUp';
 import Dashboard from "../components/Dashboard/Dashboard";
 import AddProducts from './../components/Dashboard/User/AddProducts';
 import MyProducts from './../components/Dashboard/User/MyProducts';
+import UpdateProduct from "../components/Dashboard/User/UpdateProduct";
+import MyProfile from "../components/Dashboard/User/MyProfile";
 
 
 export const router = createBrowserRouter([
@@ -38,8 +40,11 @@ export const router = createBrowserRouter([
     path: 'dashboard',
     element: <Dashboard/>,
     children: [
-      // normal user routes
-      
+      // user routes
+      {
+        path: 'my-profile',
+        element: <MyProfile/>
+      },
       {
         path: 'add-product',
         element: <AddProducts/>
@@ -48,6 +53,11 @@ export const router = createBrowserRouter([
         path: 'my-products',
         element: <MyProducts/>
       },
+      {
+        path: 'updateProduct/:id',
+        element: <UpdateProduct/>
+      },
+      
       
       
     ]

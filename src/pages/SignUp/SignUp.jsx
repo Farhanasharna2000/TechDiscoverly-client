@@ -44,7 +44,7 @@ const SignUp = () => {
       setUser({ ...result.user, photoURL: photo, displayName: name });
 
       // Post user data to the database
-      const newUser = { email, name, photo, role: 'User' };
+      const newUser = { email, name, photo, role: 'User',isSubscribed: false};
        await axiosPublic.post('/users', newUser);
       toast.success('Signup Successful');
       navigate('/');

@@ -1,4 +1,4 @@
-import { FaHome } from "react-icons/fa";
+import { FaHome, FaUser } from "react-icons/fa";
 import { MdLibraryAdd } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 
@@ -12,7 +12,11 @@ const Dashboard = () => {
             <div className="w-64 min-h-screen bg-[#D39D55] text-white">
                 <ul className="menu p-4">
                     <>
-                           
+                    <li>
+                                <NavLink to="/dashboard/my-profile">
+                                <FaUser />
+                                My Profile</NavLink>
+                            </li> 
                             <li>
                                 <NavLink to="/dashboard/add-product">
                                 <MdLibraryAdd />

@@ -57,7 +57,8 @@ const AuthProvider = ({ children }) => {
             //get token and store client
             const userInfo = {
                 email: currentUser.email,
-                name: currentUser.displayName
+                name: currentUser.displayName,
+                
             }
             axiosPublic.post('jwt', userInfo)
                 .then(res => {

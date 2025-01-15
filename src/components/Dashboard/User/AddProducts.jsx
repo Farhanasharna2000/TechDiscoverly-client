@@ -36,7 +36,7 @@ const navigate=useNavigate()
         if (res.data.success) {
           // Prepare product info
           const productInfo = {
-            productName: data.name,
+            productName: data.productName,
             ownerImage: user?.photoURL,
             productImage: res.data.data.display_url,
             ownerName: user?.displayName,
@@ -102,7 +102,7 @@ const navigate=useNavigate()
                 <span className="label-text">Product Name*</span>
               </div>
               <input
-                {...register("name", { required: true })}
+                {...register("productName", { required: true })}
                 type="text"
                 placeholder="Product Name"
                 className="input input-bordered"
