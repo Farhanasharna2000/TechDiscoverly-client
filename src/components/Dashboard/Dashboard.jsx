@@ -18,6 +18,11 @@ const Dashboard = () => {
                                 <MdLibraryAdd />
                                     Add Product</NavLink>
                             </li>
+                            <li>
+                                <NavLink to="/dashboard/my-products">
+                                <MdLibraryAdd />
+                                    My Products</NavLink>
+                            </li>
                            
                         </>
                            
