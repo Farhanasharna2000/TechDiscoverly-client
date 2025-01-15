@@ -1,7 +1,7 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import img from '../assets/404 Error-amico.png'
 const ErrorPage = () => {
-  const navigate = useNavigate()
+
 
   return (
     <section className='bg-white '>
