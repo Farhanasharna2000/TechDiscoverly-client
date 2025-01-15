@@ -11,7 +11,6 @@ import MyProducts from './../components/Dashboard/User/MyProducts';
 import UpdateProduct from "../components/Dashboard/User/UpdateProduct";
 import MyProfile from "../components/Dashboard/User/MyProfile";
 
-
 export const router = createBrowserRouter([
   {
     path: '/',
