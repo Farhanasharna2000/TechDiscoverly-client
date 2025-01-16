@@ -14,7 +14,7 @@ const MyProductRow = ({ productData, refetch }) => {
  
     const { productName, upvoteCount, _id, status } =
     productData
-       // handle order delete/cancellation
+       // handle product delete
        const handleDelete=id=>{
         Swal.fire({
             title: "Are you sure?",

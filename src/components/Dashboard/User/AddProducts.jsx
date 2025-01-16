@@ -46,7 +46,10 @@ const navigate=useNavigate()
             link: data.link,
             upvoteCount:0,
             downvoteCount:0,
-            status:"pending"
+            status:"pending",
+            isRejected:false,
+            isAccepted:false,
+            isFeatured:false
 
           };
 
