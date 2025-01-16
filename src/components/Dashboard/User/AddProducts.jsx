@@ -21,11 +21,9 @@ const navigate=useNavigate()
   const { register, handleSubmit,reset } = useForm();
 
   const onSubmit = (data) => {
-    // Prepare FormData for image upload
     const formData = new FormData();
     formData.append("image", data.image[0]);
-
-    // Upload image to IMGBB
+  
     axiosPublic
       .post(img_hosting_api, formData, {
         headers: {
@@ -34,7 +32,6 @@ const navigate=useNavigate()
       })
       .then((res) => {
         if (res.data.success) {
-          // Prepare product info
           const productInfo = {
             productName: data.productName,
             ownerImage: user?.photoURL,
@@ -44,36 +41,35 @@ const navigate=useNavigate()
             tags: tags.map((tag) => tag.text),
             description: data.description,
             link: data.link,
-            upvoteCount:0,
-            downvoteCount:0,
-            status:"pending",
-            isRejected:false,
-            isAccepted:false,
-            isFeatured:false
-
+            upvoteCount: 0,
+            downvoteCount: 0,
+            status: "pending",
+            isRejected: false,
+            isAccepted: false,
+            isFeatured: false,
           };
-
-          // Send product info to the server
+  
           return axiosSecure.post("/product", productInfo);
-        
         } else {
-          console.log('Failed to add product');
-          
+          toast.error("Failed to upload image.");
         }
       })
-      .then((product) => {
-    
-        console.log(product.data);
-        toast.success("Product added successfully!");
-        reset(); // Reset the form fields
-        setTags([]); // Reset tags state
-        navigate('/dashboard/my-products')
+      .then((response) => {
+        if (response.data.success) {
+          toast.success("Product added successfully!");
+          reset();
+          setTags([]);
+          navigate('/dashboard/my-products');
+        } else {
+          toast.error(response.data.message);
+        }
       })
       .catch((err) => {
         console.error(err);
-        toast.error(err.message);
+        toast.error("Something went wrong. Please try again.");
       });
   };
+  
 
   // Handlers for react-tag-input
   const handleDelete = (i) => {
