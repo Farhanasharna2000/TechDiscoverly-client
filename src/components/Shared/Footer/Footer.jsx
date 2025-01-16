@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 const Footer = () => {
   return (
     <footer className=' bg-[#D6CFB4]/40 '>
-      <div className="container pt-6 mx-auto ">
+      <div className="container px-4 md:px-0 pt-6 mx-auto ">
         {/* Logo */}
         {/* <img className="mx-auto" src={logo} alt="VisaZen Logo" /> */}
 <p className="text-center">TechDiscoverly</p>
@@ -48,7 +48,7 @@ const Footer = () => {
                 <Link to="/login" className="block hover:underline mr-1 hover:text-[#8D0B41]">
                   Login /
                 </Link>
-                <Link to="/register" className="block hover:underline hover:text-[#8D0B41]">
+                <Link to="/signup" className="block hover:underline hover:text-[#8D0B41]">
                   Register
                 </Link>
               </div>

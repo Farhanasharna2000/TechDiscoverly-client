@@ -32,62 +32,61 @@ const MyProducts = () => {
       <Helmet>
         <title>My Products</title>
       </Helmet>
-      <div className='container mx-auto px-4 sm:px-8'>
-        <div className='py-8'>
-          <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
-            <div className='inline-block min-w-full shadow rounded-lg overflow-hidden'>
-              <table className='min-w-full leading-normal'>
-                <thead>
-                  <tr>
-                  
-                    <th
-                      scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
-                    >
-                    Product Name
-                    </th>
-                    <th
-                      scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
-                    >
-                     Number of Votes
-                    </th>
-                    <th
-                      scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
-                    >
-                      Status
-                    </th>
-                   
-                    <th
-                      scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
-                    >
-                      Update
-                    </th>
+      <div className="container mx-auto px-4  md:px-8">
+  <h2 className="text-xl sm:text-2xl text-[#8D0B41] py-4 sm:py-8 text-center sm:text-start font-bold">
+    My Products : {products.length}
+  </h2>
+  <div className="overflow-x-auto">
+    <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden">
+      <table className="min-w-full leading-normal">
+        <thead>
+          <tr className="bg-gray-50">
+            <th
+              scope="col"
+              className="px-4 sm:px-5 py-3 border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal"
+            >
+              Product Name
+            </th>
+            <th
+              scope="col"
+              className="px-4 sm:px-5 py-3 border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal"
+            >
+              Number of Votes
+            </th>
+            <th
+              scope="col"
+              className="px-4 sm:px-5 py-3 border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal"
+            >
+              Status
+            </th>
+            <th
+              scope="col"
+              className="px-4 sm:px-5 py-3 border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal"
+            >
+              Update
+            </th>
+            <th
+              scope="col"
+              className="px-4 sm:px-5 py-3 border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal"
+            >
+              Delete
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map((productData) => (
+            <MyProductRow
+              key={productData._id}
+              refetch={refetch}
+              productData={productData}
+            />
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-                    <th
-                      scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
-                    >
-                      Delete
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                {products.map(productData => (
-                    <MyProductRow
-                      key={productData._id}
-                      refetch={refetch}
-                      productData={productData}
-                    />
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
     </>
     );
 };

@@ -93,7 +93,7 @@ console.log(role);
         </ul>
       </div>
       {/* dashboard content */}
-      <div className="flex-1 p-8">
+      <div className="flex-1 md:px-8 ">
         <Outlet />
       </div>
       

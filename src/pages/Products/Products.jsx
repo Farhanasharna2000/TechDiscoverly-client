@@ -96,33 +96,33 @@ const navigate=useNavigate()
             <Helmet>
                 <title>TechDiscoverly | Products</title>
             </Helmet>
-            <div className="flex justify-center items-center gap-4 md:pt-20">
+            <div className="flex justify-center flex-col md:flex-row items-center pt-4 gap-4 md:pt-20">
                 <input
                     type="text"
                     placeholder="Search by tag"
-                    className="input input-bordered input-secondary w-full max-w-xs"
+                    className="input input-bordered input-secondary  max-w-xs"
                     value={inputTag}
                     onChange={(e) => setInputTag(e.target.value)}
                 />
                 <div className="md:w-auto text-center">
                     <button
                         onClick={handleSearch}
-                        className="btn my-8 font-extrabold hover:bg-[#D39D55] bg-[#8D0B41] text-white hover:scale-105 transition-transform"
+                        className="btn md:my-8 font-extrabold hover:bg-[#D39D55] bg-[#8D0B41] text-white hover:scale-105 transition-transform"
                     >
                         Search
                     </button>
                     <button
                         onClick={handleReset}
-                        className="btn ml-4 hover:text-red-600 font-bold hover:bg-gray-300 bg-red-600 text-white w-full md:w-auto"
+                        className="btn ml-4 hover:text-red-600 font-bold hover:bg-gray-300 bg-red-600 text-white w-auto"
                     >
                         Reset
                     </button>
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-6">
                 {products.map((product) => (
-                    <div key={product._id} className="flex flex-col bg-white rounded-lg p-8 shadow-md">
+                    <div key={product._id} className="flex flex-col bg-white rounded-lg p-4 m-4 md:m-0 md:p-8 shadow-md">
                         <div className="">
                             <img
                                 src={product.productImage}

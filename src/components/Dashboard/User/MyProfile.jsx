@@ -28,31 +28,38 @@ const MyProfile = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-8">
-      <div className="flex items-center space-x-6">
+      {/* User Info Section */}
+      <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-6">
         <img
           src={userData.photo}
           alt="User Profile"
           className="w-32 h-32 rounded-full object-cover"
         />
-        <div>
+        <div className="text-center md:text-left">
           <h1 className="text-2xl font-bold">{userData.name}</h1>
           <p className="text-lg text-gray-500">{userData.email}</p>
         </div>
       </div>
 
-      <div className="mt-8">
+      {/* Actions Section */}
+      <div className="mt-8 ">
         {userData.isSubscribed === false ? (
           <button
             onClick={() => setIsOpen(true)}
-            className="px-4 py-3 hover:bg-[#D39D55] bg-[#8D0B41] text-white transition font-semibold"
+            className="px-4 py-3 hover:bg-[#D39D55] bg-[#8D0B41] md:text-base text-xs text-white transition font-semibold rounded-lg w-full sm:w-auto"
           >
             $500 Subscribe Now
           </button>
         ) : (
-          <p className="text-green-800 font-bold">Status: Verified</p>
+          <p className="text-green-800 font-bold text-center sm:text-left">
+            Status: Verified
+          </p>
         )}
+
+
       </div>
 
+      {/* Payment Modal */}
       {isOpen && (
         <Elements stripe={stripePromise}>
           <PaymentModal
@@ -65,6 +72,7 @@ const MyProfile = () => {
         </Elements>
       )}
     </div>
+
   );
 };
 

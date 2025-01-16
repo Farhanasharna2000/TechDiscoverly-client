@@ -44,21 +44,21 @@ const MyProductRow = ({ productData, refetch }) => {
           });
     }
     return (
-        <tr>
+        <tr className="bg-gray-50">
      
     
-        <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+        <td className='px-5 py-5 border-b border-gray-200  text-sm'>
           <p className='text-gray-900 whitespace-no-wrap'>{productName}</p>
         </td>
-        <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+        <td className='px-5 py-5 border-b border-gray-200  text-sm'>
           <p className='text-gray-900 whitespace-no-wrap'>{upvoteCount}</p>
         </td>
         
       
-        <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+        <td className='px-5 py-5 border-b border-gray-200  text-sm'>
           <p className='text-gray-900 whitespace-no-wrap'>{status}</p>
         </td>
-        <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+        <td className='px-5 py-5 border-b border-gray-200  text-sm'>
         <Link to={`/dashboard/updateProduct/${_id}`}>
           <button
            
@@ -67,7 +67,7 @@ const MyProductRow = ({ productData, refetch }) => {
     </Link>
          
           </td>
-        <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+        <td className='px-5 py-5 border-b border-gray-200  text-sm'>
           <button
            onClick={() => handleDelete(_id)}
            className="btn btn-ghost btn-lg text-[#B91C1C]"><RiDeleteBinLine />

@@ -60,12 +60,11 @@ const FeaturedProducts = () => {
         <div className="container mx-auto ">
             <SectionTitle
 
-
                 heading="Featurd Products"
             />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mx-4 md:mx-0">
                 {featurdProducts.map((product) => (
-                    <div key={product.id} className="flex flex-col bg-white rounded-lg shadow-md">
+                    <div key={product.id} className="flex flex-col  bg-white rounded-lg shadow-md">
                         {/* Card Header */}
                         <div className="p-0">
                             <img

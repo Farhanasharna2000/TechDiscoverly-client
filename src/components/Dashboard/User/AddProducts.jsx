@@ -8,6 +8,7 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import UseAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useNavigate } from "react-router-dom";
+import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 
 const img_hosting_key = import.meta.env.VITE_IMGBB_API_KEY;
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
@@ -88,117 +89,115 @@ const navigate=useNavigate()
   };
 
   return (
-    <div>
-      <h2 className="md:text-4xl text-xl font-bold text-[#8D0B41] mb-8 text-center">Add Product</h2>
-      <div className="bg-gray-50 p-8 rounded-xl">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="label">
-            <span className="label-text text-xl font-bold text-[#8D0B41]">Product Info:</span>
-          </div>
-          <div className="flex gap-6">
-            <label className="form-control w-1/2">
-              <div className="label">
-                <span className="label-text">Product Name*</span>
-              </div>
-              <input
-                {...register("productName", { required: true })}
-                type="text"
-                placeholder="Product Name"
-                className="input input-bordered"
-              />
-            </label>
-            <label className="form-control w-1/2">
-              <div className="label">
-                <span className="label-text">Product Image*</span>
-              </div>
-              <input
-                {...register("image", { required: true })}
-                type="file"
-                className="file-input w-full max-w-xs"
-              />
-            </label>
-          </div>
-
-          <label className="form-control">
-            <div className="label">
-              <span className="label-text">Description*</span>
-            </div>
-            <textarea
-              {...register("description", { required: true })}
-              className="textarea textarea-bordered h-24"
-              placeholder="Product Details"
-            ></textarea>
-          </label>
-
-          <label className="form-control">
-            <div className="label">
-              <span className="label-text">Website Link*</span>
-            </div>
-            <input
-              {...register("link", { required: true })}
-              type="text"
-              placeholder="Website Link"
-              className="input input-bordered"
-            />
-          </label>
-
-          <label className="form-control">
-            <div className="label">
-              <span className="label-text">Tags*</span>
-            </div>
-            <ReactTags
-              tags={tags}
-              handleDelete={handleDelete}
-              handleAddition={handleAddition}
-              handleDrag={handleDrag}
-              placeholder="Add a tag and click enter"
-              inputFieldPosition="top"
-              autocomplete
-              
-            />
-          </label>
-
-          <div className="label">
-            <span className="label-text text-xl font-bold text-[#8D0B41]">Product Owner Info:</span>
-          </div>
-          <div className="flex gap-6">
-            <label className="form-control w-1/2">
-              <div className="label">
-                <span className="label-text">Owner Name</span>
-              </div>
-              <input
-                {...register("ownerName")}
-                defaultValue={user?.displayName}
-                readOnly
-                className="input input-bordered"
-              />
-            </label>
-            <label className="form-control w-1/2">
-              <div className="label">
-                <span className="label-text">Owner Email</span>
-              </div>
-              <input
-                {...register("ownerEmail")}
-                defaultValue={user?.email}
-                readOnly
-                className="input input-bordered"
-              />
-            </label>
-          </div>
-
-          <label className="form-control">
-            <div className="label">
-              <span className="label-text">Owner Image</span>
-            </div>
-            <img className="w-20" src={user?.photoURL} alt="Owner" />
-          </label>
-
-          <button type="submit" className="btn mt-5 hover:bg-[#D39D55] bg-[#8D0B41] text-white">
-            Submit
-          </button>
-        </form>
+    <div className="container mx-auto px-4 md:px-8 mb-6 md:mb-8">
+  <SectionTitle heading="Add Product" />
+  <div className="bg-gray-50 p-6 md:p-8 rounded-xl shadow-lg">
+    <form onSubmit={handleSubmit(onSubmit)}>
+      {/* Product Info */}
+      <div className="mb-6">
+        <span className="block text-xl font-bold text-[#8D0B41]">
+          Product Info:
+        </span>
       </div>
-    </div>
+
+      <div className="md:flex  gap-6">
+        <label className="form-control w-full md:w-1/2">
+          <span className="label-text block mb-2">Product Name*</span>
+          <input
+            {...register("productName", { required: true })}
+            type="text"
+            placeholder="Product Name"
+            className="input input-bordered w-full"
+          />
+        </label>
+
+        <label className="form-control w-full md:w-1/3">
+          <span className="label-text block mb-2">Product Image*</span>
+          <input
+            {...register("image", { required: true })}
+            type="file"
+            className="file-input w-full"
+          />
+        </label>
+      </div>
+
+      <label className="form-control w-full mb-6">
+        <span className="label-text block my-2">Description*</span>
+        <textarea
+          {...register("description", { required: true })}
+          className="textarea textarea-bordered w-full h-24"
+          placeholder="Product Details"
+        ></textarea>
+      </label>
+
+      <label className="form-control w-full mb-6">
+        <span className="label-text block mb-2">Website Link*</span>
+        <input
+          {...register("link", { required: true })}
+          type="text"
+          placeholder="Website Link"
+          className="input input-bordered w-full"
+        />
+      </label>
+
+      <label className="form-control w-full mb-6">
+        <span className="label-text block mb-2">Tags*</span>
+        <ReactTags
+          tags={tags}
+          handleDelete={handleDelete}
+          handleAddition={handleAddition}
+          handleDrag={handleDrag}
+          placeholder="Add a tag and click enter"
+          inputFieldPosition="top"
+          autocomplete
+          className="w-full"
+        />
+      </label>
+
+      {/* Product Owner Info */}
+      <div className="mb-6">
+        <span className="block text-xl font-bold text-[#8D0B41]">
+          Product Owner Info:
+        </span>
+      </div>
+
+      <div className="md:flex  gap-6">
+        <label className="form-control w-full md:w-1/2">
+          <span className="label-text block mb-2">Owner Name</span>
+          <input
+            {...register("ownerName")}
+            defaultValue={user?.displayName}
+            readOnly
+            className="input input-bordered w-full"
+          />
+        </label>
+
+        <label className="form-control w-full md:w-1/2">
+          <span className="label-text block mb-2">Owner Email</span>
+          <input
+            {...register("ownerEmail")}
+            defaultValue={user?.email}
+            readOnly
+            className="input input-bordered w-full"
+          />
+        </label>
+      </div>
+
+      <label className="form-control w-full mt-6 ">
+        <span className="label-text block mb-2">Owner Image</span>
+        <img className="w-20 h-20 rounded-full " src={user?.photoURL} alt="Owner" />
+      </label>
+
+      <button
+        type="submit"
+        className="btn w-full md:w-auto mt-5 bg-[#8D0B41] hover:bg-[#D39D55] text-white mx-auto"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+
   );
 };
 
