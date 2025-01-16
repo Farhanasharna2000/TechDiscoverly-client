@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ProductReviewRow = ({ productReviewData,refetch }) => {
     const { productName, status, _id, isAccepted, isRejected, isFeatured } = productReviewData || {};
@@ -12,32 +13,37 @@ const ProductReviewRow = ({ productReviewData,refetch }) => {
         isRejected: isRejected || false,
         isFeatured: isFeatured || false
     });
-    const [error, setError] = useState(null);
+  
     const handleStatusUpdate = async (newStatus) => { 
         try {
-            let payload = { id: _id }; // Only send the product ID initially
+            let payload = { id: _id }; 
         
             if (newStatus === 'rejected') {
                 payload.isRejected = true;
-                payload.isAccepted = false; // Reject means not accepted
-                payload.status = 'rejected'; // Update status to 'rejected'
+                payload.isAccepted = false; 
+                payload.status = 'rejected'; 
             } else if (newStatus === 'accepted') {
                 payload.isAccepted = true;
-                payload.isRejected = false; // Accepted means not rejected
-                payload.status = 'accepted'; // Update status to 'accepted'
+                payload.isRejected = false; 
+                payload.status = 'accepted'; 
             } else if (newStatus === 'featured') {
-                // Only update isFeatured, no status change
+              
                 payload.isFeatured = true;
             }
         
             const response = await axiosSecure.post('/updateProductStatus', payload);
         
             if (response.status === 200) {
-                // If "featured" button clicked, retain previous status
+                Swal.fire({
+                    title: 'Status Updated',
+                    text: `The product has been ${newStatus}.`,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
                 if (newStatus === 'featured') {
-                    setUpdateStatus(status); // Set the status to the previous one
+                    setUpdateStatus(status); 
                 } else {
-                    setUpdateStatus(newStatus); // Update status field in UI if needed
+                    setUpdateStatus(newStatus); 
                 }
     
                 setButtonStates(prev => ({
@@ -47,10 +53,10 @@ const ProductReviewRow = ({ productReviewData,refetch }) => {
                     isFeatured: newStatus === 'featured' ? true : prev.isFeatured
                 }));
     
-                refetch(); // If you are using refetch, trigger it after the update
+                refetch(); 
             }
         } catch (err) {
-            setError('Failed to update status. Please try again.');
+           
             console.error('Failed to update status', err);
         }
     };
@@ -72,9 +78,14 @@ const ProductReviewRow = ({ productReviewData,refetch }) => {
                     View Details
                 </button>
               </Link>
-                <button
+              <button
                     onClick={() => handleStatusUpdate('featured')}
-                    className={`btn btn-sm font-extrabold hover:bg-[#D39D55] bg-[#8D0B41] text-white hover:scale-105 transition-transform`}
+                    disabled={!buttonStates.isAccepted}
+                    className={`btn btn-sm font-extrabold ${
+                        buttonStates.isAccepted 
+                            ? 'hover:bg-[#D39D55] bg-[#8D0B41]' 
+                            : 'bg-gray-400 cursor-not-allowed'
+                    } text-white hover:scale-105 transition-transform`}
                 >
                     {buttonStates.isFeatured ? 'Featured' : 'Feature'}
                 </button>

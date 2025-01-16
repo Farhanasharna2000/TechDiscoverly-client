@@ -1,21 +1,22 @@
 import { Helmet } from "react-helmet-async";
-import useRole from "../../hooks/useRole";
+
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useAuth from "../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "../../components/LoadingSpinner";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const Products = () => {
-    const [role] = useRole();
+  
     const axiosPublic = useAxiosPublic();
     const { user } = useAuth();
     const [inputTag, setInputTag] = useState("");
     const [searchTag, setSearchTag] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const limit = 6; // Products per page
-
+const navigate=useNavigate()
     const {
         data: productsData,
         isLoading,
@@ -67,6 +68,27 @@ const Products = () => {
             );
         }
         return buttons;
+    };
+    const handleUpvote = async (productId) => {
+        if (!user) {
+            navigate('/login');
+            return;
+        }
+
+        try {
+            const response = await axiosPublic.post(`/upvote/${productId}`, {
+                email: user?.email,
+            });
+
+            if (response.status === 200) {
+                toast.success('Vote successful');
+                refetch()
+
+            }
+
+        } catch (error) {
+            toast.error(error.response?.data?.message || 'An error occurred');
+        }
     };
 
     return (
@@ -128,23 +150,19 @@ const Products = () => {
                             </div>
                         </div>
 
-                        <div className="">
-                            {role === "Admin" ? (
-                                <button
-                                    className="w-full flex justify-end gap-2 px-4 py-2 rounded-lg font-medium transition-colors"
-                                    disabled
-                                >
-                                    <img className="w-8" src="https://img.icons8.com/?size=100&id=66628&format=png&color=000000" alt="" />
-                                    <span>{product.upvoteCount}</span>
-                                </button>
-                            ) : (
-                                <button
-                                    className="w-full flex justify-end gap-2 rounded-lg font-medium transition-colors"
-                                >
-                                    <img className="w-8" src="https://img.icons8.com/?size=100&id=66628&format=png&color=000000" alt="" />
-                                    <span>{product.upvoteCount}</span>
-                                </button>
-                            )}
+                        <div >
+                            <button
+                                onClick={() => handleUpvote(product._id)}
+                                className={`w-full flex justify-end gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${product.ownerEmail === user?.email ? 'cursor-not-allowed opacity-50' : ''}`}
+                                disabled={product.ownerEmail === user?.email}
+                            >
+                                <img
+                                    className="w-8"
+                                    src="https://img.icons8.com/?size=100&id=66628&format=png&color=000000"
+                                    alt=""
+                                />
+                                <span>{product.upvoteCount}</span>
+                            </button>
                         </div>
                     </div>
                 ))}
