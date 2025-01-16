@@ -1,57 +1,55 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
-import LoadingSpinner from "../LoadingSpinner";
-import SectionTitle from "../Shared/SectionTitle/SectionTitle";
-import useRole from './../../hooks/useRole';
 import useAuth from "../../hooks/useAuth";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useRole from "../../hooks/useRole";
+import SectionTitle from "../Shared/SectionTitle/SectionTitle";
+import LoadingSpinner from "../LoadingSpinner";
 import { Link } from "react-router-dom";
 
 
-
-const FeaturedProducts = () => {
-const [role]=useRole()
+const TrendingProducts = () => {
+    const [role]=useRole()
 const axiosPublic=useAxiosPublic()
 const {user}=useAuth()
 const {
-    data: featurdProducts = [],
+    data: trendingProducts = [],
     isLoading,
     
   } = useQuery({
-    queryKey: ['featurdProducts'],
+    queryKey: ['trendingProducts'],
     queryFn: async () => {
-      const { data } = await axiosPublic(`/featurdProducts`)
+      const { data } = await axiosPublic(`/trendingProducts`)
 
       return data
     },
   })
-  console.log(featurdProducts)
+  console.log(trendingProducts)
   if (isLoading) return <LoadingSpinner />
     return (
 
     <div className="container mx-auto ">
-       <SectionTitle
+      <SectionTitle               
                 
-                
-                heading="Featurd Products"
-            />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {featurdProducts.map((product) => (
-          <div key={product.id} className="flex flex-col bg-white rounded-lg shadow-md">
+                heading="Trending Products"
+            /> 
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {trendingProducts.map((product) => (
+          <div key={product.id} className="flex flex-col bg-white rounded-lg p-8 shadow-md">
             {/* Card Header */}
-            <div className="p-0">
+            <div className="">
               <img
                 src={product.productImage}
                 alt={product.productName}
-                className="w-full h-56 rounded-t-lg"
+                className="w-full  h-56 rounded-lg"
               />
             </div>
 
             {/* Card Content */}
-            <div className="flex-grow p-4">
+            <div className="flex-grow ">
              <Link to={'/productDetails'}>
              <button
            
-           className="md:text-lg font-semibold hover:text-[#8D0B41]"
+           className="md:text-lg mt-4 font-semibold hover:text-[#8D0B41]"
          >
            {product.productName}
          </button>
@@ -70,7 +68,7 @@ const {
             </div>
 
             {/* Card Footer */}
-            <div className="p-4 pt-0">
+            <div className="">
                 {role==="Admin"?
                    (<button
               
@@ -82,7 +80,7 @@ const {
                  </button>):(
                        <button
               
-                       className="w-full flex  justify-end gap-2 px-4 py-2 rounded-lg font-medium transition-colors "
+                       className="w-full flex  justify-end gap-2  rounded-lg font-medium transition-colors "
                        
                       
                      >
@@ -96,9 +94,15 @@ const {
           </div>
         ))}
       </div>
+     <div className="text-center">
+     <Link to={'/products'}>
+      <button className="btn my-8  font-extrabold hover:bg-[#D39D55] bg-[#8D0B41] text-white   hover:scale-105 transition-transform">
+      Show All Products
+                </button>
+      </Link>
+     </div>
     </div>
   );
 };
-
-export default FeaturedProducts;
-
+ 
+export default TrendingProducts;

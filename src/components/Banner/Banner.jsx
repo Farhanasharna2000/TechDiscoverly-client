@@ -10,7 +10,7 @@ const Banner = () => {
       play={true}
       interval={6000}
       bullets={false}
-      style={{ height: '500px' }}
+      style={{ height: '550px' }}
     >
       <div
         className="w-full h-full bg-cover bg-center backdrop-blur-sm flex justify-center items-center"
