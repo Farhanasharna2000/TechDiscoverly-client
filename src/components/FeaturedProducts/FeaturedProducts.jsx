@@ -48,10 +48,10 @@ const {
 
             {/* Card Content */}
             <div className="flex-grow p-4">
-             <Link to={'/productDetails'}>
+             <Link to={`/productDetails/${product._id}`}>
              <button
            
-           className="md:text-lg font-semibold hover:text-[#8D0B41]"
+           className="md:text-lg font-semibold hover:text-[#8D0B41] hover:underline"
          >
            {product.productName}
          </button>
