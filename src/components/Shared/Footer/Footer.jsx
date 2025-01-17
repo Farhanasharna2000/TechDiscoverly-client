@@ -1,13 +1,14 @@
 import { FaFacebook, FaLinkedin } from "react-icons/fa"
 import { IoLogoWhatsapp } from "react-icons/io"
 import { Link } from "react-router-dom"
+import logo from '../../../assets/logotech.png'
 const Footer = () => {
   return (
     <footer className=' bg-[#D6CFB4]/40 '>
       <div className="container px-4 md:px-0 pt-6 mx-auto ">
         {/* Logo */}
-        {/* <img className="mx-auto" src={logo} alt="VisaZen Logo" /> */}
-<p className="text-center">TechDiscoverly</p>
+        <img className="mx-auto w-64" src={logo} alt=" Logo" />
+
         {/* Footer Content */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-6">
           {/* About Us */}

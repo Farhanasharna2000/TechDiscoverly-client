@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth'
 import { AiOutlineMenu } from 'react-icons/ai'
 import useRole from '../../../hooks/useRole'
-
+import logo from '../../../assets/logotech.png'
 const Navbar = () => {
   const { user, logOut } = useAuth()
   const [isOpen, setIsOpen] = useState(false)
@@ -45,8 +45,8 @@ const Navbar = () => {
     <div className=''>
       <div className="navbar container mx-auto  ">
         <div className="navbar-start">
-       
-   <h2 className="md:text-4xl ">TechDiscoverly</h2>
+      <img className='w-56' src={logo} alt="" /> 
+  
           
         </div>
         <div className="navbar-center hidden lg:flex ">
