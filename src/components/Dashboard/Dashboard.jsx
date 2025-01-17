@@ -13,27 +13,27 @@ console.log(role);
   return (
     <div className="flex">
       {/* dashboard side bar */}
-      <div className="w-64 min-h-screen bg-[#D39D55] text-white">
-        <ul className="menu p-4">
+      <div className="md:w-64 w-36 min-h-screen bg-[#D39D55] text-white">
+        <ul className="menu md:p-4">
           <>
             {/* User */}
             {role === "User" && (
               <>
                 <li>
                   <NavLink to="/dashboard/my-profile">
-                    <FaUser className="text-xl" />
+                    <FaUser className="md:text-xl" />
                     My Profile
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/add-product">
-                    <MdLibraryAdd className="text-xl" />
+                    <MdLibraryAdd className="md:text-xl" />
                     Add Product
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/my-products">
-                    <AiOutlineShopping className="text-xl" />
+                    <AiOutlineShopping className="md:text-xl" />
                     My Products
                   </NavLink>
                 </li>
@@ -45,19 +45,19 @@ console.log(role);
               <>
                 <li>
                   <NavLink to="/dashboard/statistics">
-                    <IoStatsChart className="text-xl" />
+                    <IoStatsChart className="md:text-xl" />
                     Statistics
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/manage-users">
-                    <FaUsers className="text-xl" />
+                    <FaUsers className="md:text-xl" />
                     Manage Users
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/manage-coupons">
-                    <RiCouponFill className="text-xl" />
+                    <RiCouponFill className="md:text-xl" />
                     Manage Coupons
                   </NavLink>
                 </li>
@@ -69,13 +69,13 @@ console.log(role);
               <>
                 <li>
                   <NavLink to="/dashboard/product-review-queue">
-                    <MdRateReview className="text-xl" />
+                    <MdRateReview className="md:text-xl" />
                     Product Review Queue
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/reported-contents">
-                    <MdReportProblem className="text-xl" />
+                    <MdReportProblem className="md:text-xl" />
                     Reported Contents
                   </NavLink>
                 </li>
@@ -86,7 +86,7 @@ console.log(role);
           {/* Shared nav links */}
           <li>
             <NavLink to="/">
-              <FaHome />
+              <FaHome className="md:text-xl"/>
               Home
             </NavLink>
           </li>

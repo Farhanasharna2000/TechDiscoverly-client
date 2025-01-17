@@ -32,45 +32,41 @@ const MyProducts = () => {
       <Helmet>
         <title>My Products</title>
       </Helmet>
-      <div className="container mx-auto px-4  md:px-8">
-  <h2 className="text-xl sm:text-2xl text-[#8D0B41] py-4 sm:py-8 text-center sm:text-start font-bold">
+      <div className="container mx-auto px-4  ">
+  <h2 className="text-xl md:text-3xl  text-[#8D0B41] font-bold pt-6 flex items-center gap-2">
     My Products : {products.length}
   </h2>
-  <div className="overflow-x-auto">
-    <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden">
-      <table className="min-w-full leading-normal">
-        <thead>
-          <tr className="bg-gray-50">
+  <div className='my-6 overflow-x-auto shadow rounded-lg '>
+              
+              <table className='table table-xs table-pin-rows table-pin-cols'>
+                <thead>
+                 
+                <tr >
             <th
-              scope="col"
-              className="px-4 sm:px-5 py-3 border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal"
+             
+              className="px-4 sm:px-5 py-3 bg-gray-50 border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal"
             >
               Product Name
             </th>
             <th
-              scope="col"
-              className="px-4 sm:px-5 py-3 border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal"
+             
+              className="px-4 sm:px-5 py-3 bg-gray-50 border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal"
             >
               Number of Votes
             </th>
             <th
-              scope="col"
-              className="px-4 sm:px-5 py-3 border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal"
+             
+              className="px-4 sm:px-5 py-3 bg-gray-50 border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal"
             >
               Status
             </th>
             <th
-              scope="col"
-              className="px-4 sm:px-5 py-3 border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal"
+             
+              className="px-4 sm:px-5 py-3 border-b bg-gray-50 border-gray-200 text-gray-800 text-center  text-sm uppercase font-normal"
             >
-              Update
+             Action
             </th>
-            <th
-              scope="col"
-              className="px-4 sm:px-5 py-3 border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal"
-            >
-              Delete
-            </th>
+           
           </tr>
         </thead>
         <tbody>
@@ -85,7 +81,7 @@ const MyProducts = () => {
       </table>
     </div>
   </div>
-</div>
+
 
     </>
     );

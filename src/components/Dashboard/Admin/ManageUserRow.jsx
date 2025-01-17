@@ -6,14 +6,14 @@ import toast from "react-hot-toast";
 
 
 const ManageUserRow = ({userData,refetch}) => {
-    console.log(userData);
+  
     
     const [isOpen, setIsOpen] = useState(false)
     const axiosSecure = UseAxiosSecure()
     const { email, role, name } = userData || {}
-     // handle user role update
+ 
    const updateRole = async selectedRole => {
-    console.log(selectedRole);
+    
     
     if (role === selectedRole) return
     try {
@@ -24,7 +24,7 @@ const ManageUserRow = ({userData,refetch}) => {
       refetch()
     } catch (err) {
       toast.error(err?.response?.data)
-      console.log(err)
+      
     } finally {
       setIsOpen(false)
     }
@@ -42,12 +42,12 @@ const ManageUserRow = ({userData,refetch}) => {
     {role}
         </td>
   
-        <td className='px-5 py-5 border-b border-gray-200  text-sm'>
+        <td className='px-5 py-5 border-b border-gray-200 text-center text-sm'>
           <span
             onClick={() => setIsOpen(true)}
             className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight'
           >
-           <button className="btn  font-extrabold hover:bg-[#D39D55] bg-[#8D0B41] text-white  hover:scale-105 transition-transform w-full">Update Role</button>
+           <button className="btn text-xs btn-sm font-extrabold hover:bg-[#D39D55] bg-[#8D0B41] text-white  hover:scale-105 transition-transform w-full">Update Role</button>
           </span>
           {/* Modal */}
           <UpdateUserModal updateRole={updateRole} role={role} isOpen={isOpen} setIsOpen={setIsOpen} />

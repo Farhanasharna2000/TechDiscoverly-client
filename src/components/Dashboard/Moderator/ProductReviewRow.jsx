@@ -73,7 +73,7 @@ const ProductReviewRow = ({ productReviewData,refetch }) => {
             <td className="px-5 py-5 border-b flex justify-center items-center border-gray-200 md:flex gap-6 text-sm">
               <Link to={`/productDetails/${_id}`}>
               <button
-                    className="btn btn-sm font-extrabold bg-[#D39D55] hover:bg-[#8D0B41] text-white hover:scale-105 transition-transform"
+                    className="btn btn-sm font-bold text-xs bg-[#D39D55] hover:bg-[#8D0B41] text-white hover:scale-105 transition-transform"
                 >
                     View Details
                 </button>
@@ -81,7 +81,7 @@ const ProductReviewRow = ({ productReviewData,refetch }) => {
               <button
                     onClick={() => handleStatusUpdate('featured')}
                     disabled={!buttonStates.isAccepted}
-                    className={`btn btn-sm font-extrabold ${
+                    className={`btn btn-sm text-xs font-extrabold ${
                         buttonStates.isAccepted 
                             ? 'hover:bg-[#D39D55] bg-[#8D0B41]' 
                             : 'bg-gray-400 cursor-not-allowed'
@@ -93,7 +93,7 @@ const ProductReviewRow = ({ productReviewData,refetch }) => {
                 <button
                     onClick={buttonStates.isRejected === false && buttonStates.isAccepted === false ? () => handleStatusUpdate('accepted') : undefined}
                     disabled={buttonStates.isRejected || buttonStates.isAccepted}
-                    className={`btn btn-sm hover:text-[#1cb943] bg-[#1cb943] text-white`}
+                    className={`btn btn-sm hover:text-[#1cb943] text-xs bg-[#1cb943] text-white`}
                 >
                     {buttonStates.isAccepted ? 'Accepted' : 'Accept'}
                 </button>
@@ -101,7 +101,7 @@ const ProductReviewRow = ({ productReviewData,refetch }) => {
                 <button
                     onClick={buttonStates.isRejected === false ? () => handleStatusUpdate('rejected') : undefined}
                     disabled={buttonStates.isAccepted || buttonStates.isRejected}
-                    className="btn btn-sm hover:text-[#B91C1C] bg-[#B91C1C] text-white"
+                    className="btn btn-sm hover:text-[#B91C1C] text-xs bg-[#B91C1C] text-white"
                 >
                     {buttonStates.isRejected ? 'Rejected' : 'Reject'}
                 </button>

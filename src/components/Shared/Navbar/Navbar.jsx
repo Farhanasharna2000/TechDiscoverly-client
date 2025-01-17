@@ -3,10 +3,12 @@ import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth'
 import { AiOutlineMenu } from 'react-icons/ai'
+import useRole from '../../../hooks/useRole'
 
 const Navbar = () => {
   const { user, logOut } = useAuth()
   const [isOpen, setIsOpen] = useState(false)
+  const [role]=useRole()
   const links =
   <>
 
@@ -54,8 +56,8 @@ const Navbar = () => {
           {user?.email ? (
             <div className="flex gap-3 items-center">
                {/* Dropdown Menu */}
-            <div className='relative'>
-              <div className='flex flex-row items-center gap-3'>
+            <div className='relative z-10'>
+              <div className='flex  flex-row items-center gap-3'>
                 {/* Dropdown btn */}
                 <div
                   onClick={() => setIsOpen(!isOpen)}
@@ -96,7 +98,15 @@ const Navbar = () => {
                       <>
                       <div className='px-4 py-3  transition cursor-default  text-[#8D0B41] hidden md:block font-bold'> {user?.displayName || "Hello, User!"}</div>
                         <Link
-                          to='/dashboard'
+                         to={
+                          role === 'User'
+                            ? '/dashboard/my-profile'
+                            : role === 'Moderator'
+                            ? '/dashboard/product-review-queue'
+                            : role === 'Admin'
+                            ? '/dashboard/statistics'
+                            : '/dashboard' 
+                        }
                           className='px-4 py-2 hover:text-white hover:bg-[#D39D55]   transition font-semibold'
                         >
                           Dashboard

@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import UseAxiosSecure from "../../../hooks/useAxiosSecure";
 import LoadingSpinner from "../../LoadingSpinner";
 import ProductReviewRow from "./ProductReviewRow";
+import { FaStreetView } from "react-icons/fa";
 
 
 
@@ -23,28 +24,29 @@ const ProductReviewQueue = () => {
     console.log(reviewProducts)
     if (isLoading) return <LoadingSpinner />
     return (
-      <div className="container mx-auto px-4 sm:px-8">
-      <div className="py-8">
-        <div className="overflow-x-auto">
-          <div className="bg-gray-50 inline-block min-w-full shadow rounded-lg overflow-hidden">
-            <table className="min-w-full leading-normal">
-              <thead>
-                <tr className="text-center">
+      <div className="container mx-auto px-4 ">
+         <h2 className="text-xl md:text-3xl  text-[#8D0B41] font-bold pt-6 flex items-center gap-2"><span><FaStreetView/></span> Total Products : {reviewProducts.length}</h2>
+    <div className='my-6 overflow-x-auto shadow rounded-lg '>
+              
+              <table className='table table-xs table-pin-rows table-pin-cols'>
+                <thead>
+                 
+                <tr className="text-center ">
                   <th
-                    scope="col"
-                    className="px-5 py-3 border-b border-gray-200 text-gray-800 text-sm uppercase font-normal"
+                  
+                    className="px-5 py-3 border-b bg-gray-50 border-gray-200 text-gray-800 text-sm uppercase font-normal"
                   >
                     Product Name
                   </th>
                   <th
-                    scope="col"
-                    className="px-5 py-3 border-b border-gray-200 text-gray-800 text-sm uppercase font-normal"
+                  
+                    className="px-5 py-3 border-b bg-gray-50 border-gray-200 text-gray-800 text-sm uppercase font-normal"
                   >
                     Status
                   </th>
                   <th
-                    scope="col"
-                    className="px-5 py-3 border-b border-gray-200 text-gray-800 text-sm uppercase font-normal"
+                  
+                    className="px-5 py-3 border-b bg-gray-50 border-gray-200 text-gray-800 text-sm uppercase font-normal"
                   >
                     Action
                   </th>
@@ -62,8 +64,7 @@ const ProductReviewQueue = () => {
             </table>
           </div>
         </div>
-      </div>
-    </div>
+   
     
     );
 };

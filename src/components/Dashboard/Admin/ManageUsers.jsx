@@ -4,6 +4,7 @@ import UseAxiosSecure from "../../../hooks/useAxiosSecure"
 import LoadingSpinner from "../../LoadingSpinner"
 import { Helmet } from "react-helmet-async"
 import ManageUserRow from "./ManageUserRow"
+import { FaUsers } from 'react-icons/fa';
 
 
 const ManageUsers = () => {
@@ -25,39 +26,39 @@ const ManageUsers = () => {
     if (isLoading) return <LoadingSpinner />
     return (
       <>
-        <div className='container mx-auto px-4 sm:px-8'>
+        <div className='container mx-auto px-4 '>
           <Helmet>
             <title>Manage Users</title>
           </Helmet>
-          <div className='py-8'>
-            <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
-              <div className='bg-gray-50 inline-block min-w-full shadow rounded-lg overflow-hidden'>
-                <table className=' min-w-full leading-normal'>
+          <h2 className="text-xl md:text-3xl  text-[#8D0B41] font-bold pt-6 flex items-center gap-2"><span><FaUsers/></span> Total Users : {users.length}</h2>
+              <div className='my-6 overflow-x-auto shadow rounded-lg '>
+              
+                <table className='table table-xs table-pin-rows table-pin-cols'>
                   <thead>
-                    <tr>
+                    <tr className=" ">
                     <th
-                        scope='col'
-                        className='px-5 py-3   border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                     
+                        className='px-5 py-3 bg-gray-50  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                       >
                         Name
                       </th>
                       <th
-                        scope='col'
-                        className='px-5 py-3   border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                       
+                        className='px-5 py-3 bg-gray-50  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                       >
                         Email
                       </th>
                      
                       <th
-                        scope='col'
-                        className='px-5 py-3   border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                       
+                        className='px-5 py-3 bg-gray-50  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                       >
                        Role
                       </th>
   
                       <th
-                        scope='col'
-                        className='px-5 py-3   border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                       
+                        className='px-5 py-3 bg-gray-50 text-center  border-b border-gray-200 text-gray-800   text-sm uppercase font-normal'
                       >
                         Action
                       </th>
@@ -75,8 +76,7 @@ const ManageUsers = () => {
                 </table>
               </div>
             </div>
-          </div>
-        </div>
+        
       </>
     )
   }
