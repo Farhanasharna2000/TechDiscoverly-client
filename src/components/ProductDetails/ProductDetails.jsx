@@ -10,84 +10,105 @@ import toast from "react-hot-toast";
 import { HiOutlineExternalLink } from "react-icons/hi";
 
 
-const ProductDetails = () => {
-  const { id } = useParams();
-  const { user } = useAuth();
-  const navigate = useNavigate()
 
 
-  const [description, setDescription] = useState("")
-
-
-  const axiosSecure = UseAxiosSecure()
+  const ProductDetails = () => {
+    const { id } = useParams();
+    const { user } = useAuth();
+    const navigate = useNavigate();
+    const [description, setDescription] = useState("");
+    const axiosSecure = UseAxiosSecure();
   
-  //rating
-  const [rating, setRating] = useState(0);
-  const onStarClick = (nextValue) => {
-    setRating(nextValue);
-  };
-  const {
-    data: product = {},
-    isLoading,
-    refetch
-  } = useQuery({
-    queryKey: ['product', id],
-    queryFn: async () => {
-      const { data } = await axiosSecure(
-        `/product/${id}`
-      )
-      return data
-    },
-  })
-  console.log(product);
-
-  const handleReport = () => {
-
-  };
-  const handleReviewSubmit =async (e) => {
-    e.preventDefault();
-    const reviewData = {
-      reviewerName: user?.displayName,
-      reviewerImage: user?.photoURL,
-      description,
-      rating,
-      productId:product._id
-    }
-    // console.log(reviewData);
-     
-   // save review in db
-   try {
-    
-    await axiosSecure.post('/review',reviewData)
-    toast.success('Review Added Successfully!')
+    // Rating state
+    const [rating, setRating] = useState(0);
+    const onStarClick = (nextValue) => {
+      setRating(nextValue);
+    };
   
-  } catch (err) {
-    console.log(err)
-  } 
-  };
-  const handleUpvote = async (productId) => {
-    if (!user) {
-      navigate('/login');
-      return;
-    }
+    // Product data query
+    const {
+      data: product = {},
+      isLoading: productLoading,
+      refetch: refetchProduct
+    } = useQuery({
+      queryKey: ['product', id],
+      queryFn: async () => {
+        const { data } = await axiosSecure(`/product/${id}`);
+        return data;
+      },
+    });
+  
+    // Reviews data query
+    const {
+      data: reviews = [],
+      isLoading: reviewsLoading,
+      refetch: refetchReviews
+    } = useQuery({
+      queryKey: ['reviews', id],
+      queryFn: async () => {
+        const { data } = await axiosSecure(`/reviews/${id}`);
+        return data;
+      },
+    });
+  
+    const handleReport =async (e) => {
+      e.preventDefault();
+      const reportData = {
+      
+        productId: product._id,
+        productName:product.productName
+      };
+      await axiosSecure.post('/reports', reportData);
+      toast.success('Report Added Successfully!');
+    };
 
-    try {
-      const response = await axiosSecure.post(`/upvote/${productId}`, {
-        email: user?.email,
-      });
-
-      if (response.status === 200) {
-        toast.success('Vote successful');
-        refetch()
-
+  
+    const handleReviewSubmit = async (e) => {
+      e.preventDefault();
+      const reviewData = {
+        reviewerName: user?.displayName,
+        reviewerImage: user?.photoURL,
+        description,
+        rating,
+        productId: product._id,
+      };
+  
+      try {
+        await axiosSecure.post('/reviews', reviewData);
+        toast.success('Review Added Successfully!');
+        setDescription('');
+        setRating(0);
+      
+        refetchReviews();
+      } catch (err) {
+        console.error('Error submitting review:', err);
+        toast.error('Failed to submit review');
       }
-
-    } catch (error) {
-      toast.error(error.response?.data?.message || 'An error occurred');
-    }
-  };
-
-  if (isLoading) return <LoadingSpinner />;
+    };
+  
+    const handleUpvote = async (productId) => {
+      if (!user) {
+        navigate('/login');
+        return;
+      }
+  
+      try {
+        const response = await axiosSecure.post(`/upvote/${productId}`, {
+          email: user?.email,
+        });
+  
+        if (response.status === 200) {
+          toast.success('Vote successful');
+          refetchProduct();
+        }
+      } catch (error) {
+        toast.error(error.response?.data?.message || 'An error occurred');
+      }
+    };
+  
+    if (productLoading || reviewsLoading) return <LoadingSpinner />;
+  
+    console.log('Fetched reviews:', reviews); 
   return (
     <div className="container md:pt-24 mx-auto">
       <div className="flex gap-10">
@@ -95,7 +116,7 @@ const ProductDetails = () => {
  <div className="bg-white shadow-md rounded-lg p-6 mb-6 ">
         <img src={product.productImage} alt={product.productName} className="w-full h-96 object-cover rounded-md" />
         <div className="flex-grow">
-        <h2 className="text-2xl font-bold mt-4">{product.productName}</h2>
+        <h2 className="md:text-2xl font-bold  text-[#8D0B41] mt-4">{product.productName}</h2>
         <p className="mt-2 text-gray-600">{product.description}</p>
         <div className="flex flex-wrap gap-2 mt-4">
           {product.tags.map((tag) => (
@@ -146,13 +167,13 @@ const ProductDetails = () => {
       
             <img className="w-20  h-20 rounded-full " src={user?.photoURL} alt="" />
             {/* <input placeholder={user?.displayName}  readOnly className="input mt-3  input-secondary input-bordered w-full max-w-xs" /> */}
-            <p className="block text-[#8D0B41] md:text-2xl font-bold mb-2 ">*{user?.displayName}*</p>
+            <p className="block text-[#8D0B41] md:text-2xl font-bold my-2 ">*{user?.displayName}*</p>
           </div>
           <div>
             <label className="block   font-bold mb-2 ">Review </label>
             <textarea value={description}
             placeholder="Type here"
-              onChange={(e) => setDescription(e.target.value)} className="w-full  px-3 py-2 border rounded" required />
+              onChange={(e) => setDescription(e.target.value)} className="w-full h-28 px-3 py-2 border rounded" required />
           </div>
           <div className="flex items-center">
             <label className="block font-bold mb-4 text-[#8D0B41]">Rating </label>
@@ -184,24 +205,36 @@ const ProductDetails = () => {
      
 
       {/* Reviews Section */}
-      <div className="bg-white shadow-md rounded-lg p-6 mb-6">
-        <h3 className="text-xl font-semibold mb-4">Reviews</h3>
-        {/* {reviews.length === 0 ? (
+      <div className="bg-white shadow-md md:w-1/2 mx-auto rounded-lg p-6 mb-6">
+        <h3 className="md:text-3xl text-center font-bold mb-4 text-[#8D0B41]">⭐ Reviews ⭐</h3>
+        {reviews.length === 0 ? (
           <p>No reviews yet.</p>
         ) : (
-          <div className="space-y-4">
+        
+          <div >
+             
             {reviews.map((review) => (
-              <div key={review.id} className="border p-4 rounded-md">
+              <div key={review.id} className="border p-4  mb-5 items-center rounded-md">
                 <div className="flex items-center gap-2">
                   <img src={review.reviewerImage} alt={review.reviewerName} className="w-10 h-10 rounded-full" />
-                  <span className="font-medium">{review.reviewerName}</span>
+                  <span className="font-bold text-[#8D0B41]">{review.reviewerName}</span>
                 </div>
                 <p className="mt-2">{review.description}</p>
-                <p className="mt-1 text-yellow-500">Rating: {review.rating}/5</p>
+                <div className="flex items-center mt-4 space-x-1">
+                    {Array(review.rating)
+                      .fill()
+                      .map((_, index) => (
+                        <span key={index} className="text-yellow-500 text-2xl">
+                          &#9733;
+                        </span>
+                      ))}
+                  </div>
+           
               </div>
             ))}
           </div>
-        )} */}
+     
+        )}
       </div>
 
      
