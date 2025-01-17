@@ -27,6 +27,7 @@
     "react-router-dom": "^7.1.1",
     "react-star-rating-component": "^1.4.1",
     "react-tag-input": "^6.10.3",
+    "recharts": "^2.15.0",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.15.10",
     "swiper": "^11.2.1"
