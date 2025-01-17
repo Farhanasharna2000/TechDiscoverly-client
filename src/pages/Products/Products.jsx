@@ -144,7 +144,7 @@ const navigate=useNavigate()
                                         key={tag}
                                         className="bg-[#D6CFB4]/40 text-gray-700 text-sm font-medium px-2 py-1 rounded-md"
                                     >
-                                        {tag}
+                                        #{tag}
                                     </span>
                                 ))}
                             </div>
