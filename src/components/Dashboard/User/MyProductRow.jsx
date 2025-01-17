@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 
 const MyProductRow = ({ productData, refetch }) => {
-    console.log(productData);
+    
     
     const axiosSecure=UseAxiosSecure()
  

@@ -21,7 +21,7 @@ const ManageUsers = () => {
         return data
       },
     })
-  console.log(users);
+
   
     if (isLoading) return <LoadingSpinner />
     return (
