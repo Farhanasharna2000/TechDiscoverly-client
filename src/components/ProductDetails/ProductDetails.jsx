@@ -53,14 +53,21 @@ const ProductDetails = () => {
 
   const handleReport = async (e) => {
     e.preventDefault();
+  
     const reportData = {
-
       productId: product._id,
-      productName: product.productName
+      productName: product.productName,
+      userEmail:user?.email,
     };
-    await axiosSecure.post('/reports', reportData);
-    toast.success('Report Added Successfully!');
+  
+    try {
+      await axiosSecure.post('/reports', reportData);
+      toast.success('Report Added Successfully!');
+    } catch (error) {
+      toast.error('You have already reported this product.');
+    }
   };
+  
 
 
   const handleReviewSubmit = async (e) => {
