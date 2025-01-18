@@ -38,8 +38,8 @@ const settings = {
   const handleCopy = (code) => {
     navigator.clipboard.writeText(code).then(() => {
       setIsCopied(true);
-      toast.success("Coupon Code Copied!"); // Show toast notification
-      setTimeout(() => setIsCopied(false), 2000); // Reset after 2 seconds
+      toast.success("Coupon Code Copied!"); 
+      setTimeout(() => setIsCopied(false), 2000); 
     }).catch((err) => console.error("Failed to copy text:", err));
   };
     if (isLoading) return <LoadingSpinner />
@@ -55,23 +55,26 @@ const settings = {
       <div  key={coupon._id}  className=" bg-white shadow-lg rounded-lg p-6 border border-gray-200">
       <h2 className="text-xl font-bold text-[#8D0B41] text-center mb-4">🎉 Coupon Code 🎉</h2>
       <div className="bg-gray-100 p-4 rounded-md mb-4 text-center">
-      <span 
-          className="text-gray-700 cursor-pointer hover:text-[#8D0B41]" 
-          onClick={() => handleCopy(coupon.code)}
+        <p onClick={() => handleCopy(coupon.code)}>
+        <span className="font-bold text-[#8D0B41]">Code: </span>
+        <span 
+          className="text-gray-700 cursor-pointer hover:underline hover:text-[#8D0B41]"  
         >
-          <span className="font-bold text-[#8D0B41]">Code:</span> {coupon.code}
+           {coupon.code}
         </span>
+        </p>
+     
       </div>
-      <div className="mb-4 flex flex-col">
-    <div className="flex-grow"> 
-       <p className="text-gray-600 text-sm italic ">{coupon.description}</p>
-    </div>
+      <div className="mb-4 space-y-2">
+   
+       <p className="text-gray-600 text-sm italic">{coupon.description}</p>
+
   
-        <p >
-          <span className="font-bold text-[#8D0B41]">Discount:</span> {coupon.discount}%
+        <p className="font-bold md:text-4xl text-[#8D0B41]">
+          {coupon.discount}% off
         </p>
         <p className="text-gray-700">
-                <span className="font-bold text-[#8D0B41]">Expiry Date:</span>{" "}
+                <span className="font-bold text-[#8D0B41]">Valid Until*</span>{" "}
                 {format(new Date(coupon.expiry), "MMMM dd, yyyy h:mm a")}
               </p>
       </div>

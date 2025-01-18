@@ -219,11 +219,23 @@ const ManageCoupons = () => {
                 className="w-full p-2 border border-gray-300 rounded"
                 required
               />
-              <input
+           <input
                 type="text"
                 placeholder="Coupon Description"
                 value={couponDescription}
-                onChange={(e) => setCouponDescription(e.target.value)}
+                onChange={(e) => {
+                  const limit = e.target.value.replace(/\s/g, "");
+                  if (limit.length > 15) {
+                    Swal.fire({
+                      title: "Error!",
+                      text: "Cannot write more than 10 characters ",
+                      icon: "error",
+                      confirmButtonText: "OK",
+                    });
+                  } else {
+                    setCouponDescription(e.target.value);
+                  }
+                }}
                 className="w-full p-2 border border-gray-300 rounded"
                 required
               />

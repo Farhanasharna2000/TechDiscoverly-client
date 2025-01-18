@@ -112,7 +112,7 @@ const PaymentModal = ({ closeModal, refetch, userData, payment }) => {
             type="submit"
             disabled={!stripe}
           >
-            Pay $500
+            Pay ${payment}
           </button>
           <button
             onClick={closeModal}
