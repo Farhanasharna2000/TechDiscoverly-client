@@ -1,30 +1,34 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import UseAxiosSecure from "../../../hooks/useAxiosSecure";
-import { useEffect } from "react";
 import { MdAddCard } from "react-icons/md";
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBinLine } from "react-icons/ri";
 import Swal from "sweetalert2";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const ManageCoupons = () => {
   const [coupons, setCoupons] = useState([]);
   const [couponCode, setCouponCode] = useState("");
-  const [expiryDate, setExpiryDate] = useState("");
+  const [expiryDate, setExpiryDate] = useState(null); 
   const [couponDescription, setCouponDescription] = useState("");
   const [discountAmount, setDiscountAmount] = useState("");
   const [editingCoupon, setEditingCoupon] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const axiosSecure = UseAxiosSecure();
+
   const isFormValid = () => {
-    return couponCode.trim() !== "" && 
-           expiryDate.trim() !== "" && 
-           couponDescription.trim() !== "" && 
-           discountAmount.trim() !== "";
+    return (
+      couponCode.trim() !== "" &&
+      expiryDate !== null &&
+      couponDescription.trim() !== "" &&
+      discountAmount.trim() !== ""
+    );
   };
-  
+
   useEffect(() => {
     fetchCoupons();
   }, []);
@@ -36,21 +40,25 @@ const ManageCoupons = () => {
 
   const addCoupon = async () => {
     if (!isFormValid()) {
-        Swal.fire({
-          title: "Error!",
-          text: "Please fill out all fields before adding the coupon.",
-          icon: "error",
-          confirmButtonText: "OK",
-        });
-        return;
-      }
+      Swal.fire({
+        title: "Error!",
+        text: "Please fill out all fields before adding the coupon.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
+
     const newCoupon = {
       code: couponCode,
-      expiry: expiryDate,
+      expiry: new Date(expiryDate).toISOString(), // Convert expiry to ISO string
       description: couponDescription,
       discount: discountAmount,
     };
+
     const response = await axiosSecure.post("/coupons", newCoupon);
+    console.log(response); // Debug log
+
     if (response.status === 200) {
       fetchCoupons();
       closeModal();
@@ -66,14 +74,17 @@ const ManageCoupons = () => {
   };
 
   const editCoupon = async () => {
-   
-      const updatedCoupon = {
-        code: couponCode,
-        expiry: expiryDate,
-        description: couponDescription,
-        discount: discountAmount,
-      };
-      await axiosSecure.put(`/coupons/${editingCoupon._id}`, updatedCoupon);
+    const updatedCoupon = {
+      code: couponCode,
+      expiry: new Date(expiryDate).toISOString(),
+      description: couponDescription,
+      discount: discountAmount,
+    };
+
+    const response = await axiosSecure.put(`/coupons/${editingCoupon._id}`, updatedCoupon);
+    console.log(response); // Debug log
+
+    if (response.status === 200) {
       fetchCoupons();
       closeModal();
       Swal.fire({
@@ -82,7 +93,7 @@ const ManageCoupons = () => {
         icon: "success",
         confirmButtonText: "OK",
       });
-  
+    }
   };
 
   const deleteCoupon = async (id) => {
@@ -95,22 +106,19 @@ const ManageCoupons = () => {
       cancelButtonText: "Cancel",
     }).then(async (result) => {
       if (result.isConfirmed) {
-      
-          const response = await axiosSecure.delete(`/coupons/${id}`);
-          if (response.status === 200) {
-            fetchCoupons();
-            Swal.fire({
-              title: "Deleted!",
-              text: "Coupon deleted successfully.",
-              icon: "success",
-              confirmButtonText: "OK",
-            });
-          }
-     
+        const response = await axiosSecure.delete(`/coupons/${id}`);
+        if (response.status === 200) {
+          fetchCoupons();
+          Swal.fire({
+            title: "Deleted!",
+            text: "Coupon deleted successfully.",
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+        }
       }
     });
   };
-  
 
   const openModal = (coupon = null) => {
     if (coupon) {
@@ -133,26 +141,23 @@ const ManageCoupons = () => {
 
   const clearForm = () => {
     setCouponCode("");
-    setExpiryDate("");
+    setExpiryDate(null); 
     setCouponDescription("");
     setDiscountAmount("");
   };
 
   return (
     <div className="container mx-auto p-4 md:p-6">
-      
-
       <button
         onClick={() => openModal()}
-        className="btn flex items-center gap-2 font-extrabold hover:bg-[#D39D55] bg-[#8D0B41] text-white   hover:scale-105 transition-transform"
+        className="btn flex items-center gap-2 font-extrabold hover:bg-[#D39D55] bg-[#8D0B41] text-white hover:scale-105 transition-transform"
       >
-      <span className="md:text-xl"><MdAddCard /></span>  Add Coupon
+        <span className="md:text-xl"><MdAddCard /></span> Add Coupon
       </button>
 
-     <SectionTitle heading={'All Coupons'}></SectionTitle>
-      <div className=' overflow-x-auto shadow rounded-lg '>
-     
-     <table className='table  text-center  '>
+      <SectionTitle heading={"All Coupons"}></SectionTitle>
+      <div className="overflow-x-auto shadow rounded-lg">
+        <table className="table text-center">
           <thead>
             <tr className="uppercase">
               <th className="border p-2">Coupon Code</th>
@@ -163,37 +168,39 @@ const ManageCoupons = () => {
             </tr>
           </thead>
           <tbody>
-  {coupons.length > 0 ? (
-    coupons.map((coupon) => (
-      <tr key={coupon._id} className="text-center">
-        <td className="border p-2">{coupon.code}</td>
-        <td className="border p-2">
-          {new Date(coupon.expiry).toLocaleDateString()}
-        </td>
-        <td className="border p-2">{coupon.description}</td>
-        <td className="border p-2">{coupon.discount}</td>
-        <td className="border p-2 ">
-        <button
-                  onClick={() => openModal(coupon)}      
-                         className="btn btn-ghost btn-lg text-[#1cb943]"><FaEdit/>
-                        </button>
-                        <button
-           onClick={() => deleteCoupon(coupon._id)}
-           className="btn btn-ghost btn-lg text-[#B91C1C]"><RiDeleteBinLine />
-          </button>
-          
-        </td>
-      </tr>
-    ))
-  ) : (
-    <tr>
-      <td colSpan="5" className="border p-4 text-center text-gray-500">
-        No data available.
-      </td>
-    </tr>
-  )}
-</tbody>
-
+            {coupons.length > 0 ? (
+              coupons.map((coupon) => (
+                <tr key={coupon._id} className="text-center">
+                  <td className="border p-2">{coupon.code}</td>
+                  <td className="border p-2">
+                    {new Date(coupon.expiry).toLocaleDateString()}
+                  </td>
+                  <td className="border p-2">{coupon.description}</td>
+                  <td className="border p-2">{coupon.discount}</td>
+                  <td className="border p-2">
+                    <button
+                      onClick={() => openModal(coupon)}
+                      className="btn btn-ghost btn-lg text-[#1cb943]"
+                    >
+                      <FaEdit />
+                    </button>
+                    <button
+                      onClick={() => deleteCoupon(coupon._id)}
+                      className="btn btn-ghost btn-lg text-[#B91C1C]"
+                    >
+                      <RiDeleteBinLine />
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="5" className="border p-4 text-center text-gray-500">
+                  No data available.
+                </td>
+              </tr>
+            )}
+          </tbody>
         </table>
       </div>
 
@@ -213,13 +220,6 @@ const ManageCoupons = () => {
                 required
               />
               <input
-                type="date"
-                value={expiryDate}
-                onChange={(e) => setExpiryDate(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded"
-                required
-              />
-           <input
                 type="text"
                 placeholder="Coupon Description"
                 value={couponDescription}
@@ -228,7 +228,7 @@ const ManageCoupons = () => {
                   if (limit.length > 15) {
                     Swal.fire({
                       title: "Error!",
-                      text: "Cannot write more than 10 characters ",
+                      text: "Cannot write more than 15 characters",
                       icon: "error",
                       confirmButtonText: "OK",
                     });
@@ -247,21 +247,29 @@ const ManageCoupons = () => {
                 className="w-full p-2 border border-gray-300 rounded"
                 required
               />
+              <DatePicker
+                selected={expiryDate}
+                onChange={(date) => setExpiryDate(date)}
+                minDate={new Date()}
+                dateFormat="yyyy-MM-dd"
+                placeholderText="Select Expiry Date"
+                className="w-full p-2 border border-gray-300 rounded"
+                required
+              />
               <div className="flex gap-4 justify-end">
-              <button
-                onClick={editingCoupon ? editCoupon : addCoupon}
-           className="btn  hover:text-green-600 font-bold hover:bg-gray-300 bg-green-600 text-white"
-              >
-                {editingCoupon ? "Update Coupon" : "Add Coupon"}
-              </button>
-              <button
-                onClick={closeModal}
-                className="btn  hover:text-red-600 font-bold hover:bg-gray-300 bg-red-600 text-white "
-              >
-                Cancel
-              </button>
+                <button
+                  onClick={editingCoupon ? editCoupon : addCoupon}
+                  className="btn hover:text-green-600 font-bold hover:bg-gray-300 bg-green-600 text-white"
+                >
+                  {editingCoupon ? "Update Coupon" : "Add Coupon"}
+                </button>
+                <button
+                  onClick={closeModal}
+                  className="btn hover:text-red-600 font-bold hover:bg-gray-300 bg-red-600 text-white"
+                >
+                  Cancel
+                </button>
               </div>
-           
             </div>
           </div>
         </div>

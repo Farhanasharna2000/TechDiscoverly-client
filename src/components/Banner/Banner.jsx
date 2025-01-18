@@ -35,7 +35,7 @@ const Banner = () => {
     <Slider {...settings} className="md:pt-16">
     {slides.map((slide, index) => (
       <div key={index} className="relative ">
-        <div className="absolute inset-0 bg-black bg-opacity-40 blur-sm z-10"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-65 blur-sm z-10"></div>
         <img className="w-full md:h-[500px] h-[250px] object-cover" src={slide.img} alt={`Slide ${index + 1}`} />
         <div className="absolute top-0 left-0 z-20 w-full h-full flex flex-col items-center justify-center">
           <p className="text-white md:text-4xl font-bold mb-4 text-center px-4">{slide.caption}</p>

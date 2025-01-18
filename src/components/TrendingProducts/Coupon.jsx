@@ -13,6 +13,7 @@ const Coupon = () => {
     const axiosPublic = useAxiosPublic()
     const [role]=useRole()
     const [isCopied, setIsCopied] = useState(false);
+  
     const {
       data: coupons = [],
       isLoading,
@@ -65,11 +66,10 @@ const settings = {
         </p>
      
       </div>
-      <div className="mb-4 space-y-2">
+      <div className="mb-4 space-y-2 text-center">
    
        <p className="text-gray-600 text-sm italic">{coupon.description}</p>
 
-  
         <p className="font-bold md:text-4xl text-[#8D0B41]">
           {coupon.discount}% off
         </p>
