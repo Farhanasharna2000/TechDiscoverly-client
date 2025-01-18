@@ -72,6 +72,10 @@ const ProductDetails = () => {
 
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
+    if (!description || rating === 0) {
+      toast.error('Please fill all fields before submitting.');
+      return;
+    }
     const reviewData = {
       reviewerName: user?.displayName,
       reviewerImage: user?.photoURL,
@@ -171,12 +175,7 @@ const ProductDetails = () => {
             <form onSubmit={handleReviewSubmit} className="space-y-4">
 
               <div>
-                {/* <div className="w-20 h-20 mx-auto rounded-full">
-  {user?.photoURL && (
-    <img src={user.photoURL} alt="User Profile" className="w-full h-full object-cover rounded-full" />
-  )}
-  <input type="file" name="image" className="mt-2" id="fileInput" />
-</div> */}
+    
 
                 <img className="w-20  h-20 mx-auto rounded-full " src={user?.photoURL} alt="" />
                 <input placeholder={user?.displayName} readOnly className="input mt-3 read-only:bg-gray-100 input-bordered w-full " />

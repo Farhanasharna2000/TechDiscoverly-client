@@ -6,6 +6,7 @@ import SectionTitle from "../Shared/SectionTitle/SectionTitle";
 import LoadingSpinner from "../LoadingSpinner";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import Coupon from "./Coupon";
 
 
 const TrendingProducts = () => {
@@ -121,6 +122,7 @@ const TrendingProducts = () => {
                     </button>
                 </Link>
             </div>
+            <Coupon/>
         </div>
     );
 };

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState } from "react";
 import UseAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useEffect } from "react";
@@ -138,7 +139,7 @@ const ManageCoupons = () => {
   };
 
   return (
-    <div className="container mx-auto md:p-6">
+    <div className="container mx-auto p-4 md:p-6">
       
 
       <button
@@ -148,11 +149,12 @@ const ManageCoupons = () => {
       <span className="md:text-xl"><MdAddCard /></span>  Add Coupon
       </button>
 
-      <div>
      <SectionTitle heading={'All Coupons'}></SectionTitle>
-        <table className="w-full table-auto border-collapse">
+      <div className=' overflow-x-auto shadow rounded-lg '>
+     
+     <table className='table  text-center  '>
           <thead>
-            <tr>
+            <tr className="uppercase">
               <th className="border p-2">Coupon Code</th>
               <th className="border p-2">Expiry Date</th>
               <th className="border p-2">Description</th>

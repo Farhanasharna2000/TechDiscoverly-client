@@ -35,7 +35,7 @@ const ManageUsers = () => {
               
                 <table className='table table-xs table-pin-rows table-pin-cols'>
                   <thead>
-                    <tr className=" ">
+                    <tr >
                     <th
                      
                         className='px-5 py-3 bg-gray-50  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
