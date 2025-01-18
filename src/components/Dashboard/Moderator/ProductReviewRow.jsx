@@ -64,10 +64,10 @@ const ProductReviewRow = ({ productReviewData,refetch }) => {
 
     return (
         <tr className="bg-gray-50 ">
-            <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                <p className="text-gray-900 whitespace-no-wrap">{productName}</p>
+            <td className="px-5 py-5 border-b border-gray-200 text-xs md:text-base">
+                <p className="text-gray-900  whitespace-no-wrap">{productName}</p>
             </td>
-            <td className="px-5 py-5 border-b text-center border-gray-200 text-sm">
+            <td className="px-5 py-5 border-b text-center border-gray-200 text-xs md:text-base">
                 <p className="text-gray-900 whitespace-no-wrap">{updateStatus}</p>
             </td>
             <td className="px-5 py-5 border-b flex justify-center items-center border-gray-200 md:flex gap-6 text-sm">

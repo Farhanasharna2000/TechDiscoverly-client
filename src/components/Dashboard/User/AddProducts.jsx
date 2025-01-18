@@ -94,8 +94,8 @@ const navigate=useNavigate()
   <div className="bg-gray-50 p-6 md:p-8 rounded-xl shadow-lg">
     <form onSubmit={handleSubmit(onSubmit)}>
       {/* Product Info */}
-      <div className="mb-6">
-        <span className="block text-xl font-bold text-[#8D0B41]">
+      <div className="md:mb-6 mb-2">
+        <span className="block md:text-xl font-bold text-[#8D0B41]">
           Product Info:
         </span>
       </div>
@@ -155,8 +155,8 @@ const navigate=useNavigate()
       </label>
 
       {/* Product Owner Info */}
-      <div className="mb-6">
-        <span className="block text-xl font-bold text-[#8D0B41]">
+      <div className="md:mb-6 mb-2">
+        <span className="block md:text-xl font-bold text-[#8D0B41]">
           Product Owner Info:
         </span>
       </div>

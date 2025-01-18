@@ -6,10 +6,7 @@ import LoadingSpinner from "../LoadingSpinner";
 import { useQuery } from "@tanstack/react-query";
 import StarRatingComponent from "react-star-rating-component";
 import toast from "react-hot-toast";
-
 import { HiOutlineExternalLink } from "react-icons/hi";
-
-
 
 
 const ProductDetails = () => {
@@ -121,11 +118,11 @@ const ProductDetails = () => {
 
   console.log('Fetched reviews:', reviews);
   return (
-    <div className="container md:pt-24 mx-auto">
-      <div className="flex gap-10">
+    <div className="container md:pt-24 pt-4 mx-auto">
+      <div className="md:flex gap-10">
         {/* Product Details Section */}
-        <div className="bg-white shadow-md rounded-lg p-6 mb-6 ">
-          <img src={product.productImage} alt={product.productName} className="w-full h-96 object-cover rounded-md" />
+        <div className="bg-white shadow-md rounded-lg p-6 mx-4 md:mx-0 mb-6 ">
+          <img src={product.productImage} alt={product.productName} className="w-full md:h-96 object-cover rounded-md" />
           <div className="flex-grow">
             <h2 className="md:text-2xl font-bold  text-[#8D0B41] mt-4">{product.productName}</h2>
             <p className="mt-2 text-gray-600">{product.description}</p>
@@ -169,7 +166,7 @@ const ProductDetails = () => {
 
         </div>
         {/* Post Review Section */}
-        <div className="bg-white shadow-md rounded-lg p-6 md:w-1/2 mx-auto justify-center  md:h-1/4  mb-8">
+        <div className="bg-white shadow-md rounded-lg p-6 mx-4 md:mx-auto md:w-1/2  justify-center  md:h-1/4  mb-8">
           <h3 className="md:text-4xl text-[#8D0B41] text-center font-bold mb-4">Post a Review</h3>
           <div className="flex flex-col">
             <form onSubmit={handleReviewSubmit} className="space-y-4">
@@ -216,7 +213,7 @@ const ProductDetails = () => {
 
 
       {/* Reviews Section */}
-      <div className="bg-white shadow-md md:w-1/2 mx-auto rounded-lg p-6 mb-6">
+      <div className="bg-white shadow-md md:w-1/2 mx-4 md:mx-auto rounded-lg p-6 mb-6">
         <h3 className="md:text-3xl text-center font-bold mb-4 text-[#8D0B41]">⭐ Reviews ⭐</h3>
         {reviews.length === 0 ? (
           <p>No reviews yet.</p>

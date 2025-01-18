@@ -28,7 +28,7 @@ const FeaturedProducts = () => {
             return data
         },
     })
-    console.log(featurdProducts)
+   
     if (isLoading) return <LoadingSpinner />
 
     const handleUpvote = async (productId) => {
@@ -57,7 +57,7 @@ const FeaturedProducts = () => {
 
     return (
 
-        <div className="container mx-auto ">
+        <div className="container mx-auto md:px-4">
             <SectionTitle
 
                 heading="Featurd Products"

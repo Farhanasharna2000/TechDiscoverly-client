@@ -15,13 +15,13 @@ const Coupon = () => {
     const [isCopied, setIsCopied] = useState(false);
   
     const {
-      data: coupons = [],
+      data: trendingCoupons = [],
       isLoading,
     
     } = useQuery({
-      queryKey: ['coupons'],
+      queryKey: ['trendingCoupons'],
       queryFn: async () => {
-        const { data } = await axiosPublic('/coupons')
+        const { data } = await axiosPublic('/trendingCoupons')
         return data
       },
     })
@@ -47,12 +47,12 @@ const settings = {
 
     return (
       <div className=" mx-4 md:mx-0">
-{coupons.length > 0 ? (
+{trendingCoupons.length > 0 ? (
     <Slider {...settings} className="pb-8 md:w-1/2  mx-auto">
             
             
    {
-    coupons.map(coupon=>(
+    trendingCoupons.map(coupon=>(
       <div  key={coupon._id}  className=" bg-white shadow-lg rounded-lg p-6 border border-gray-200">
       <h2 className="text-xl font-bold text-[#8D0B41] text-center mb-4">🎉 Coupon Code 🎉</h2>
       <div className="bg-gray-100 p-4 rounded-md mb-4 text-center">
@@ -81,11 +81,11 @@ const settings = {
      {
       role==='User'?(
         <Link 
-    
+    target="_blank"
      to={'/dashboard/my-profile'} 
      
      className="flex justify-center items-center">
-     <button className="w-full md:w-auto  px-4 py-2 text-white bg-[#8D0B41] rounded hover:bg-[#D39D55] transition">
+     <button  className="w-full md:w-auto  px-4 py-2 text-white bg-[#8D0B41] rounded hover:bg-[#D39D55] transition">
         Use Coupon
       </button>
      </Link>

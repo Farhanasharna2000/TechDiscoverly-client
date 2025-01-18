@@ -7,16 +7,15 @@ import PaymentModal from './PaymentModal';
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY)
-import Swal from 'sweetalert2'; // Import SweetAlert2
+import Swal from 'sweetalert2'; 
 
 const MyProfile = () => {
   const axiosSecure = UseAxiosSecure();
   const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
-  const [coupon, setCoupon] = useState('');  // State to store the coupon code
-  const [payment, setPayment] = useState(500);  // Initial payment value
+  const [coupon, setCoupon] = useState('');  
+  const [payment, setPayment] = useState(500); 
 
-  // Apply coupon logic
   const handleCouponChange = (e) => {
     setCoupon(e.target.value);
   };
@@ -28,9 +27,8 @@ const MyProfile = () => {
       // If the coupon is valid, apply the discount
       const { discount } = response.data;
       const newPayment = payment - (payment * (discount / 100));
-      setPayment(newPayment);  // Update payment with the discount
-
-      // Show success alert using SweetAlert2
+      setPayment(newPayment);  
+    
       Swal.fire({
         title: 'Coupon Applied!',
         text: `You get ${discount}% off. Total: $${newPayment}`,
@@ -38,7 +36,7 @@ const MyProfile = () => {
         confirmButtonText: 'OK',
       });
     } catch (error) {
-      // Show error alert using SweetAlert2
+     
       Swal.fire({
         title: 'Error!',
         text: error.response?.data?.message || 'Failed to apply coupon',

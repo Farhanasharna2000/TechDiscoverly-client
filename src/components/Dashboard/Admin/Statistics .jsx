@@ -42,7 +42,7 @@ const Statistics = () => {
   ];
 
   return (
-    <div className="container mx-auto md:pt-12 md:px-5">
+    <div className="container mx-auto md:pt-12 pt-3 md:px-5">
       <div className="stats text-center w-full mx-auto bg-gray-50 shadow">
         <div className="stat">
           <div className="stat-figure text-primary">

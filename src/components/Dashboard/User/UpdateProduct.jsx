@@ -101,8 +101,8 @@ const UpdateProduct = () => {
   <SectionTitle heading="Update Product" />
   <div className="bg-gray-50 p-4 md:p-8 rounded-xl shadow-lg">
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="mb-4">
-        <label className="block text-xl font-bold text-[#8D0B41]">
+      <div className="md:mb-4 mb-2">
+        <label className="block md:text-xl font-bold text-[#8D0B41]">
           Product Info:
         </label>
       </div>
@@ -117,7 +117,7 @@ const UpdateProduct = () => {
           />
         </div>
 
-        <div className="w-full md:w-1/3 mb-4 md:mb-0">
+        <div className="w-full md:w-1/3 mb-2 md:mb-0">
           <label className="block mb-2">Product Image</label>
           <input
             {...register("image")}
@@ -127,7 +127,7 @@ const UpdateProduct = () => {
         </div>
       </div>
 
-      <div className="mb-4">
+      <div className="md:mb-4 mb-2">
         <label className="block mb-2">Description*</label>
         <textarea
           {...register("description", { required: true })}
@@ -144,7 +144,7 @@ const UpdateProduct = () => {
         />
       </div>
 
-      <div className="mb-4">
+      <div className="md:mb-4 ">
         <label className="block mb-2">Tags*</label>
         <ReactTags
           tags={tags}

@@ -92,7 +92,7 @@ const navigate=useNavigate()
     };
 
     return (
-        <div className="container mx-auto mb-8">
+        <div className="container mx-auto md:px-4 mb-8">
             <Helmet>
                 <title>TechDiscoverly | Products</title>
             </Helmet>
