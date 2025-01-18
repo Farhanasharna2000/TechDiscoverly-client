@@ -37,10 +37,13 @@ const ManageUserRow = ({userData,refetch}) => {
         <td className='px-5 py-5 border-b border-gray-200  text-sm'>
           <p className='text-gray-900 whitespace-no-wrap'>{email}</p>
         </td>
-        <td className='px-5 py-5 border-b border-gray-200  text-sm'>
-            
-    {role}
-        </td>
+        <td className={`px-5 py-5 border-b font-bold border-gray-200 text-sm ${
+  role === 'User' ? 'text-red-500' : 
+  role === 'Moderator' ? 'text-green-500' : ''
+}`}>
+  {role}
+</td>
+
   
         <td className='px-5 py-5 border-b border-gray-200 text-center text-sm'>
           <span

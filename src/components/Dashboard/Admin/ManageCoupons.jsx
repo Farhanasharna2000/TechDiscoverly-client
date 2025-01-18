@@ -8,6 +8,7 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import Swal from "sweetalert2";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Helmet } from "react-helmet-async";
 
 const ManageCoupons = () => {
   const [coupons, setCoupons] = useState([]);
@@ -148,6 +149,9 @@ const ManageCoupons = () => {
 
   return (
     <div className="container mx-auto p-4 md:p-6">
+        <Helmet>
+        <title> TechDiscoverly | Dashboard | Manage Coupons</title>
+      </Helmet>
       <button
         onClick={() => openModal()}
         className="btn flex items-center gap-2 font-extrabold hover:bg-[#D39D55] bg-[#8D0B41] text-white hover:scale-105 transition-transform"

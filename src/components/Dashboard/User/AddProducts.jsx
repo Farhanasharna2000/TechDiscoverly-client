@@ -9,6 +9,7 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import UseAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useNavigate } from "react-router-dom";
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 const img_hosting_key = import.meta.env.VITE_IMGBB_API_KEY;
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
@@ -44,7 +45,7 @@ const navigate=useNavigate()
             link: data.link,
             upvoteCount: 0,
             downvoteCount: 0,
-            status: "pending",
+            status: "Pending",
             isRejected: false,
             isAccepted: false,
             isFeatured: false,
@@ -90,6 +91,9 @@ const navigate=useNavigate()
 
   return (
     <div className="container mx-auto px-4 md:px-8 mb-6 md:mb-8">
+        <Helmet>
+        <title> TechDiscoverly | Dashboard | Add Products</title>
+      </Helmet>
   <SectionTitle heading="Add Product" />
   <div className="bg-gray-50 p-6 md:p-8 rounded-xl shadow-lg">
     <form onSubmit={handleSubmit(onSubmit)}>

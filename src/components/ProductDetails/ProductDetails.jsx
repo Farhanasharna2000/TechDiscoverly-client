@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import StarRatingComponent from "react-star-rating-component";
 import toast from "react-hot-toast";
 import { HiOutlineExternalLink } from "react-icons/hi";
+import { Helmet } from "react-helmet-async";
 
 
 const ProductDetails = () => {
@@ -119,10 +120,13 @@ const ProductDetails = () => {
   console.log('Fetched reviews:', reviews);
   return (
     <div className="container md:pt-24 pt-4 mx-auto">
+       <Helmet>
+        <title> TechDiscoverly | Product Details</title>
+      </Helmet>
       <div className="md:flex gap-10">
         {/* Product Details Section */}
         <div className="bg-white shadow-md rounded-lg p-6 mx-4 md:mx-0 mb-6 ">
-          <img src={product.productImage} alt={product.productName} className="w-full md:h-96 object-cover rounded-md" />
+          <img src={product.productImage} alt={product.productName} className="w-full md:h-[435px] rounded-md" />
           <div className="flex-grow">
             <h2 className="md:text-2xl font-bold  text-[#8D0B41] mt-4">{product.productName}</h2>
             <p className="mt-2 text-gray-600">{product.description}</p>
@@ -223,12 +227,12 @@ const ProductDetails = () => {
 
             {reviews.map((review) => (
               <div key={review.id} className="border p-4  mb-5 items-center rounded-md">
-                <div className="flex items-center gap-2">
-                  <img src={review.reviewerImage} alt={review.reviewerName} className="w-10 h-10 rounded-full" />
-                  <span className="font-bold text-[#8D0B41]">{review.reviewerName}</span>
+                <div className="flex flex-col justify-center items-center gap-2">
+                  <img src={review.reviewerImage} alt={review.reviewerName} className="w-10 md:w-14 h-10 md:h-14 rounded-full" />
+                  <span className="md:text-xl font-bold text-[#8D0B41]">{review.reviewerName}</span>
                 </div>
                 <p className="mt-2">{review.description}</p>
-                <div className="flex items-center mt-4 space-x-1">
+                <div className="flex justify-center items-center mt-4 space-x-1">
                   {Array(review.rating)
                     .fill()
                     .map((_, index) => (

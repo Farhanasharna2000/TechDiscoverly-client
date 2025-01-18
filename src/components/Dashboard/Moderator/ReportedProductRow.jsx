@@ -37,6 +37,8 @@ const ReportedProductRow = ({reportedData,refetch}) => {
             }
           });
     }
+
+    
     return (
            <tr className="bg-gray-50">
                <td className='px-5 py-5 border-b border-gray-200  text-sm'>

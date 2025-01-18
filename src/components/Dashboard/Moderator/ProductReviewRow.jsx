@@ -18,14 +18,14 @@ const ProductReviewRow = ({ productReviewData,refetch }) => {
         try {
             let payload = { id: _id }; 
         
-            if (newStatus === 'rejected') {
+            if (newStatus === 'Rejected') {
                 payload.isRejected = true;
                 payload.isAccepted = false; 
-                payload.status = 'rejected'; 
-            } else if (newStatus === 'accepted') {
+                payload.status = 'Rejected'; 
+            } else if (newStatus === 'Accepted') {
                 payload.isAccepted = true;
                 payload.isRejected = false; 
-                payload.status = 'accepted'; 
+                payload.status = 'Accepted'; 
             } else if (newStatus === 'featured') {
               
                 payload.isFeatured = true;
@@ -48,8 +48,8 @@ const ProductReviewRow = ({ productReviewData,refetch }) => {
     
                 setButtonStates(prev => ({
                     ...prev,
-                    isAccepted: newStatus === 'accepted' ? true : prev.isAccepted,
-                    isRejected: newStatus === 'rejected' ? true : prev.isRejected,
+                    isAccepted: newStatus === 'Accepted' ? true : prev.isAccepted,
+                    isRejected: newStatus === 'Rejected' ? true : prev.isRejected,
                     isFeatured: newStatus === 'featured' ? true : prev.isFeatured
                 }));
     
@@ -68,10 +68,17 @@ const ProductReviewRow = ({ productReviewData,refetch }) => {
                 <p className="text-gray-900  whitespace-no-wrap">{productName}</p>
             </td>
             <td className="px-5 py-5 border-b text-center border-gray-200 text-xs md:text-base">
-                <p className="text-gray-900 whitespace-no-wrap">{updateStatus}</p>
+            <p
+  className={`whitespace-no-wrap font-bold ${updateStatus === 'Accepted' ? 'text-green-500' : 
+    updateStatus === 'Rejected' ? 'text-red-500' : 
+    updateStatus === 'Pending' ? 'text-[#8D0B41]' : 'text-gray-900'}`}
+>
+  {updateStatus}
+</p>
+
             </td>
             <td className="px-5 py-5 border-b flex justify-center items-center border-gray-200 md:flex gap-6 text-sm">
-              <Link to={`/productDetails/${_id}`}>
+              <Link  target="_blank" to={`/productDetails/${_id}`}>
               <button
                     className="btn btn-sm font-bold text-xs bg-[#D39D55] hover:bg-[#8D0B41] text-white hover:scale-105 transition-transform"
                 >
@@ -91,7 +98,7 @@ const ProductReviewRow = ({ productReviewData,refetch }) => {
                 </button>
                 {/* Accept Button */}
                 <button
-                    onClick={buttonStates.isRejected === false && buttonStates.isAccepted === false ? () => handleStatusUpdate('accepted') : undefined}
+                    onClick={buttonStates.isRejected === false && buttonStates.isAccepted === false ? () => handleStatusUpdate('Accepted') : undefined}
                     disabled={buttonStates.isRejected || buttonStates.isAccepted}
                     className={`btn btn-sm hover:text-[#1cb943] text-xs bg-[#1cb943] text-white`}
                 >
@@ -99,7 +106,7 @@ const ProductReviewRow = ({ productReviewData,refetch }) => {
                 </button>
                 {/* Reject Button */}
                 <button
-                    onClick={buttonStates.isRejected === false ? () => handleStatusUpdate('rejected') : undefined}
+                    onClick={buttonStates.isRejected === false ? () => handleStatusUpdate('Rejected') : undefined}
                     disabled={buttonStates.isAccepted || buttonStates.isRejected}
                     className="btn btn-sm hover:text-[#B91C1C] text-xs bg-[#B91C1C] text-white"
                 >

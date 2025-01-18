@@ -29,8 +29,8 @@ const MyProducts = () => {
     if (isLoading) return <LoadingSpinner />
     return (
         <>
-      <Helmet>
-        <title>My Products</title>
+     <Helmet>
+        <title> TechDiscoverly | Dashboard | My Products</title>
       </Helmet>
       <div className="container mx-auto px-4  ">
   <h2 className="text-xl md:text-3xl  text-[#8D0B41] font-bold pt-6 flex items-center gap-2">

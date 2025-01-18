@@ -3,6 +3,7 @@ import UseAxiosSecure from "../../../hooks/useAxiosSecure";
 import LoadingSpinner from "../../LoadingSpinner";
 import ProductReviewRow from "./ProductReviewRow";
 import { FaStreetView } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -25,6 +26,9 @@ const ProductReviewQueue = () => {
     if (isLoading) return <LoadingSpinner />
     return (
       <div className="container mx-auto px-4 ">
+          <Helmet>
+        <title> TechDiscoverly | Dashboard | Product Review Queue</title>
+      </Helmet>
          <h2 className="text-xl md:text-3xl  text-[#8D0B41] font-bold pt-6 flex items-center gap-2"><span><FaStreetView/></span> Total Products : {reviewProducts.length}</h2>
     <div className='my-6 overflow-x-auto shadow rounded-lg '>
               

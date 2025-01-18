@@ -3,6 +3,7 @@ import ReportedProductRow from "./ReportedProductRow";
 import UseAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "../../LoadingSpinner";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -26,6 +27,9 @@ const ReportedContents = () => {
     if (isLoading) return <LoadingSpinner />
     return (
         <div className="container mx-auto px-4 ">
+            <Helmet>
+        <title> TechDiscoverly | Dashboard | Reported Contents</title>
+      </Helmet>
         <h2 className=" pt-6 text-red-600 flex items-center gap-2"><span className=" text-2xl"><MdReportProblem /></span><span className="text-xl md:text-3xl   font-bold">Total Reports :</span>  </h2>
    <div className='my-6 overflow-x-auto shadow rounded-lg '>
              

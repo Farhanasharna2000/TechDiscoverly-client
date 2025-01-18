@@ -2,9 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import UseAxiosSecure from './../../../hooks/useAxiosSecure';
 import LoadingSpinner from './../../LoadingSpinner';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from 'recharts';
+import { Helmet } from "react-helmet-async";
 
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+const COLORS = ['#8D0B41', '#00C49F', '#FFBB28'];
 
 const Statistics = () => {
   const axiosSecure = UseAxiosSecure();
@@ -18,6 +19,7 @@ const Statistics = () => {
       return data;
     },
   });
+
 
   const { users = 0, reviews = 0, totalProducts = 0 } = stats;
 
@@ -43,6 +45,9 @@ const Statistics = () => {
 
   return (
     <div className="container mx-auto md:pt-12 pt-3 md:px-5">
+        <Helmet>
+        <title> TechDiscoverly | Dashboard | Statistics</title>
+      </Helmet>
       <div className="stats text-center w-full mx-auto bg-gray-50 shadow">
         <div className="stat">
           <div className="stat-figure text-primary">

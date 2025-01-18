@@ -8,6 +8,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY)
 import Swal from 'sweetalert2'; 
+import { Helmet } from "react-helmet-async";
 
 const MyProfile = () => {
   const axiosSecure = UseAxiosSecure();
@@ -61,6 +62,9 @@ const MyProfile = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-8">
+       <Helmet>
+        <title> TechDiscoverly | Dashboard | My Profile</title>
+      </Helmet>
       {/* User Info Section */}
       <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-6">
         <img

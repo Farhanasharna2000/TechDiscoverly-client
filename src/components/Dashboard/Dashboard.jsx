@@ -6,12 +6,14 @@ import { RiCouponFill } from "react-icons/ri";
 import { NavLink, Outlet } from "react-router-dom";
 import useRole from "../../hooks/useRole";
 
+
 const Dashboard = () => {
   const [role] = useRole();
 console.log(role);
 
   return (
     <div className="flex">
+     
       {/* dashboard side bar */}
       <div className="md:w-64 w-36 min-h-screen bg-[#D39D55] text-white">
         <ul className="menu md:p-4">

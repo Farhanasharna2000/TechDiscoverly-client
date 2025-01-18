@@ -43,6 +43,15 @@ const MyProductRow = ({ productData, refetch }) => {
             }
           });
     }
+    if (!productData || productData.length === 0) {
+      return (
+        <tr className="bg-gray-50">
+          <td colSpan="4" className="px-5 py-5 text-center text-gray-900">
+            No Data Found
+          </td>
+        </tr>
+      );
+    }
     return (
         <tr className="bg-gray-50">
     
