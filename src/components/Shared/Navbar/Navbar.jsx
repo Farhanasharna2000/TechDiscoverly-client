@@ -45,7 +45,9 @@ const Navbar = () => {
     <div className=''>
       <div className="navbar container mx-auto  ">
         <div className="navbar-start">
-      <img className='w-56' src={logo} alt="" /> 
+   <Link to={'/'}>
+   <img className='w-56' src={logo} alt="" /> 
+   </Link>
   
           
         </div>

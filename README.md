@@ -1,4 +1,4 @@
-#  🕸 TechDiscoverly
+#  🌐 TechDiscoverly
 
 TechDiscoverly is a platform where users can discover and share their favorite tech products. From web apps to AI tools, software, games, and mobile applications, this platform allows users to explore and contribute to a growing collection of innovative products.
 
@@ -49,7 +49,7 @@ The platform features robust user authentication, role-based permissions (Normal
 1. **Clone the repository**:
     ```bash
     git clone https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Farhanasharna2000/tree/main
-    cd Farhanasharna2000
+    cd b10a12-client-side-Farhanasharna2000
     ```
 
 2. **Install dependencies**:

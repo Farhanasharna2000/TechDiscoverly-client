@@ -151,6 +151,7 @@ const navigate=useNavigate()
                         </div>
 
                         <div >
+                    
                             <button
                                 onClick={() => handleUpvote(product._id)}
                                 className={`w-full flex justify-end gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${product.ownerEmail === user?.email ? 'cursor-not-allowed opacity-50' : ''}`}

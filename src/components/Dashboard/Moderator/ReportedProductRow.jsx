@@ -41,9 +41,7 @@ const ReportedProductRow = ({reportedData,refetch}) => {
     
     return (
            <tr className="bg-gray-50">
-               <td className='px-5 py-5 border-b border-gray-200  text-sm'>
-                 <p className='text-gray-900 text-center whitespace-no-wrap'>{productId}</p>
-               </td>
+              
                <td className='px-5 py-5 border-b border-gray-200  text-sm'>
                  <p className='text-gray-900 text-center whitespace-no-wrap'>{productName}</p>
                </td>

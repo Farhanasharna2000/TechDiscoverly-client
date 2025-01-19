@@ -217,7 +217,8 @@ const ProductDetails = () => {
 
 
       {/* Reviews Section */}
-      <div className="bg-white shadow-md md:w-1/2 mx-4 md:mx-auto rounded-lg p-6 mb-6">
+      <div className="flex gap-36">
+      <div className="bg-white shadow-md  rounded-lg p-6 mb-6">
         <h3 className="md:text-3xl text-center font-bold mb-4 text-[#8D0B41]">⭐ Reviews ⭐</h3>
         {reviews.length === 0 ? (
           <p>No reviews yet.</p>
@@ -247,6 +248,8 @@ const ProductDetails = () => {
           </div>
 
         )}
+      </div>
+      <div className="md:w-1/2 hidden md:block"></div>
       </div>
 
 

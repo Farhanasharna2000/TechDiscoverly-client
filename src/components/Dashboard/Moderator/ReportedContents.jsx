@@ -37,12 +37,7 @@ const ReportedContents = () => {
                <thead>
                 
                <tr className="text-center ">
-               <th
-                 
-                 className="px-5 py-3 border-b bg-gray-50 border-gray-200 text-gray-800 text-sm uppercase font-normal"
-               >
-               Product Id
-               </th>
+             
                  <th
                  
                    className="px-5 py-3 border-b bg-gray-50 border-gray-200 text-gray-800 text-sm uppercase font-normal"
