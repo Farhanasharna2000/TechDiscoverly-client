@@ -25,7 +25,7 @@ const MyProducts = () => {
         return data
       },
     })
-    console.log(products)
+
     if (isLoading) return <LoadingSpinner />
     return (
         <>

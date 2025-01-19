@@ -58,7 +58,7 @@ const ManageCoupons = () => {
     };
 
     const response = await axiosSecure.post("/coupons", newCoupon);
-    console.log(response); // Debug log
+   
 
     if (response.status === 200) {
       fetchCoupons();
@@ -83,7 +83,7 @@ const ManageCoupons = () => {
     };
 
     const response = await axiosSecure.put(`/coupons/${editingCoupon._id}`, updatedCoupon);
-    console.log(response); // Debug log
+  
 
     if (response.status === 200) {
       fetchCoupons();

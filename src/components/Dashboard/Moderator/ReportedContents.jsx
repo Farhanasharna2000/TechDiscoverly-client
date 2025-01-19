@@ -22,7 +22,7 @@ const ReportedContents = () => {
       },
     })
 
-  console.log(reports);
+ 
   
     if (isLoading) return <LoadingSpinner />
     return (

@@ -22,7 +22,7 @@ const ProductReviewQueue = () => {
         return data
       },
     })
-    console.log(reviewProducts)
+    
     if (isLoading) return <LoadingSpinner />
     return (
       <div className="container mx-auto px-4 ">

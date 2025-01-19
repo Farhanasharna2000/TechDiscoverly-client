@@ -9,13 +9,13 @@ import useRole from "../../hooks/useRole";
 
 const Dashboard = () => {
   const [role] = useRole();
-console.log(role);
+
 
   return (
     <div className="flex">
      
       {/* dashboard side bar */}
-      <div className="md:w-64 w-36 min-h-screen bg-[#D39D55] text-white">
+      <div className="md:w-64 w-36 h-screen bg-[#D39D55] text-white">
         <ul className="menu md:p-4">
           <>
             {/* User */}
@@ -95,7 +95,7 @@ console.log(role);
         </ul>
       </div>
       {/* dashboard content */}
-      <div className="flex-1 md:px-8 ">
+      <div className="flex-1 md:px-8 bg-[#FFF8E6]/30">
         <Outlet />
       </div>
       

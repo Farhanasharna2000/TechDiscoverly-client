@@ -117,7 +117,7 @@ const ProductDetails = () => {
 
   if (productLoading || reviewsLoading) return <LoadingSpinner />;
 
-  console.log('Fetched reviews:', reviews);
+
   return (
     <div className="container md:pt-24 pt-4 mx-auto">
        <Helmet>

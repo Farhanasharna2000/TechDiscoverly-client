@@ -7,7 +7,13 @@ import Banner from "../../components/Banner/Banner"
 
 const Home = () => {
   return (
-    <div>
+    <div 
+    style={{
+      overflowX: "hidden",
+      margin: 0,
+      padding: 0,
+      width: "100%",
+    }}>
      <Helmet>
         <title> TechDiscoverly | Home</title>
       </Helmet>
