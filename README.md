@@ -1,8 +1,49 @@
-# React + Vite
+# TechDiscoverly
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TechDiscoverly is a platform where users can discover and share their favorite tech products. From web apps to AI tools, software, games, and mobile applications, this platform allows users to explore and contribute to a growing collection of innovative products.
 
-Currently, two official plugins are available:
+## 🚀 Description
+TechDiscoverly offers a community-driven space , enabling users to:
+- Submit new tech products.
+- Upvote or downvote existing products.
+- Post reviews for products.
+- Unlock premium features with paid subscriptions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The platform features robust user authentication, role-based permissions (Normal Users, Moderators, Admins), and a comprehensive product moderation system.
+
+## 🛠️ Main Technologies
+- **Frontend**: React, Tailwind CSS, DaisyUI
+- **Backend**: Firebase
+- **State Management**: React Query
+- **Payments**: Stripe Integration
+- **Routing**: React Router DOM
+- **Charts**: Recharts
+
+## ✨ Main Features
+1. **User Authentication**: Secure login and registration with Firebase.
+2. **Role-based Access**: Features tailored for Normal Users, Moderators, and Admins.
+3. **Product Discovery**: Browse, upvote, and review products.
+4. **Product Moderation**: Manage product listings effectively.
+5. **Premium Features**: Unlock additional features through Stripe-based subscriptions.
+6. **Responsive UI**: Built with Tailwind CSS and DaisyUI for a seamless user experience.
+
+## 📦 Main Dependencies
+- `@stripe/react-stripe-js`: Stripe integration for payments.
+- `@tanstack/react-query`: Data fetching and state management.
+- `axios`: API communication.
+- `date-fns`: Date manipulation and formatting.
+- `firebase`: Backend for authentication and database.
+- `react-datepicker`: Date picker components.
+- `react-router-dom`: Routing system.
+- `recharts`: Data visualization with charts.
+
+## 🔧 Main Dev Dependencies
+- `@vitejs/plugin-react`: Vite plugin for React.
+- `eslint`: Linting and code quality.
+- `tailwindcss`: CSS framework for styling.
+- `daisyui`: Tailwind CSS component library.
+- `postcss`: CSS transformations.
+
+## 🌐 Live Link
+Experience TechDiscoverly here: [https://techdiscoverly.web.app](https://techdiscoverly.web.app)
+
