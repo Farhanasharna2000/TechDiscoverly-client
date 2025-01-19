@@ -1,4 +1,4 @@
-# TechDiscoverly
+#  🕸 TechDiscoverly
 
 TechDiscoverly is a platform where users can discover and share their favorite tech products. From web apps to AI tools, software, games, and mobile applications, this platform allows users to explore and contribute to a growing collection of innovative products.
 
@@ -12,19 +12,19 @@ TechDiscoverly offers a community-driven space , enabling users to:
 The platform features robust user authentication, role-based permissions (Normal Users, Moderators, Admins), and a comprehensive product moderation system.
 
 ## 🛠️ Main Technologies
-- **Frontend**: React, Tailwind CSS, DaisyUI
-- **Backend**: Firebase
+- **Frontend**: React, React Router, Tailwind CSS, DaisyUI
+- **Backend**: Node.js, Express.js, Firebase
 - **State Management**: React Query
 - **Payments**: Stripe Integration
-- **Routing**: React Router DOM
-- **Charts**: Recharts
+- **Database**: MongoDB
+- **Additional Libraries**:Recharts, SweetAlert2, React Icons
 
 ## ✨ Main Features
 1. **User Authentication**: Secure login and registration with Firebase.
 2. **Role-based Access**: Features tailored for Normal Users, Moderators, and Admins.
 3. **Product Discovery**: Browse, upvote, and review products.
 4. **Product Moderation**: Manage product listings effectively.
-5. **Premium Features**: Unlock additional features through Stripe-based subscriptions.
+5. **sPremium Feature**: Unlock additional features through Stripe-based subscriptions.
 6. **Responsive UI**: Built with Tailwind CSS and DaisyUI for a seamless user experience.
 
 ## 📦 Main Dependencies
@@ -43,6 +43,29 @@ The platform features robust user authentication, role-based permissions (Normal
 - `tailwindcss`: CSS framework for styling.
 - `daisyui`: Tailwind CSS component library.
 - `postcss`: CSS transformations.
+
+## 💻 **How to Run Locally**
+
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Farhanasharna2000/tree/main
+    cd Farhanasharna2000
+    ```
+
+2. **Install dependencies**:
+    ```bash
+    npm install
+    ```
+
+3. **Start the development server**:
+    ```bash
+    npm run dev
+    ```
+
+4. Visit [http://localhost:2000](http://localhost:2000) in your browser.
+
+---
+
 
 ## 🌐 Live Link
 Experience TechDiscoverly here: [https://techdiscoverly.web.app](https://techdiscoverly.web.app)
