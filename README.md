@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 
 #  🌐TechDiscoverly
+=======
+#  🌐 TechDiscoverly
+>>>>>>> 6544890ce988f66434ae1d052673bd10d9d1d0f9
 
 TechDiscoverly is a platform where users can discover and share their favorite tech products. From web apps to AI tools, software, games, and mobile applications, this platform allows users to explore and contribute to a growing collection of innovative products.
 
