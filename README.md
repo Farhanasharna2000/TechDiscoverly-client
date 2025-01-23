@@ -48,8 +48,8 @@ The platform features robust user authentication, role-based permissions (Normal
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Farhanasharna2000/tree/main
-    cd b10a12-client-side-Farhanasharna2000
+    git clone https://github.com/Farhanasharna2000/TechDiscoverly-client
+    cd TechDiscoverly-client
     ```
 
 2. **Install dependencies**:
