@@ -1,5 +1,5 @@
 <img 
-  src="https://i.ibb.co.com/jZsybRw/home.png" 
+  src="https://i.ibb.co.com/mqnwqvS/Screenshot-1.png" 
   alt="" 
   style="width: 100%; height: auto;" 
 />
