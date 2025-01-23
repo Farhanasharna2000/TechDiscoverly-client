@@ -3,6 +3,7 @@
 TechDiscoverly is a platform where users can discover and share their favorite tech products. From web apps to AI tools, software, games, and mobile applications, this platform allows users to explore and contribute to a growing collection of innovative products.
 
 ## 🚀 Description
+
 TechDiscoverly offers a community-driven space , enabling users to:
 - Submit new tech products.
 - Upvote or downvote existing products.
