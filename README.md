@@ -1,4 +1,8 @@
-
+<img 
+  src="https://i.ibb.co.com/jZsybRw/home.png" 
+  alt="" 
+  style="width: 100%; height: auto;" 
+/>
 #  🌐 TechDiscoverly
 
 TechDiscoverly is a platform where users can discover and share their favorite tech products. From web apps to AI tools, software, games, and mobile applications, this platform allows users to explore and contribute to a growing collection of innovative products.
