@@ -70,8 +70,7 @@ The platform features robust user authentication, role-based permissions (Normal
 
 ## 🌐 Live Link
 Experience TechDiscoverly here: [https://techdiscoverly.web.app](https://techdiscoverly.web.app)
-
-## Admin email:farhanasharna@gmail.com
-
-## Admin password:1122aA@
+## Admin Info
+**Admin email:farhanasharna@gmail.com** 
+**Admin password:1122aA@**
 
