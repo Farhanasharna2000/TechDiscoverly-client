@@ -25,24 +25,21 @@ The platform features robust user authentication, role-based permissions (Normal
 2. **Role-based Access**: Features tailored for Normal Users, Moderators, and Admins.
 3. **Product Discovery**: Browse, upvote, and review products.
 4. **Product Moderation**: Manage product listings effectively.
-5. **sPremium Feature**: Unlock additional features through Stripe-based subscriptions.
+5. **Premium Feature**: Unlock additional features through Stripe-based subscriptions.
 6. **Responsive UI**: Built with Tailwind CSS and DaisyUI for a seamless user experience.
 
 ## 📦 Main Dependencies
 - `@stripe/react-stripe-js`: Stripe integration for payments.
 - `@tanstack/react-query`: Data fetching and state management.
 - `axios`: API communication.
-- `date-fns`: Date manipulation and formatting.
 - `firebase`: Backend for authentication and database.
-- `react-datepicker`: Date picker components.
 - `react-router-dom`: Routing system.
-- `recharts`: Data visualization with charts.
+
 
 ## 🔧 Main Dev Dependencies
 - `@vitejs/plugin-react`: Vite plugin for React.
 - `eslint`: Linting and code quality.
 - `tailwindcss`: CSS framework for styling.
-- `daisyui`: Tailwind CSS component library.
 - `postcss`: CSS transformations.
 
 ## 💻 **How to Run Locally**
