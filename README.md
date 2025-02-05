@@ -24,6 +24,12 @@ The platform features robust user authentication, role-based permissions (Normal
 5. **Premium Feature**: Unlock additional features through Stripe-based subscriptions.
 6. **Responsive UI**: Built with Tailwind CSS and DaisyUI for a seamless user experience.
 
+## 🌍 Live Demo  
+
+Experience **TechDiscoverly** live:  
+➡️ **[Click here to visit](https://techdiscoverly.web.app)**  
+
+---
 ## 🛠 Tech Stack
 
 - **Frontend:** React, React Router, Tailwind CSS
