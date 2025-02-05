@@ -1,5 +1,6 @@
-![TechDiscoverly Banner](/public/home.png) 
 # 🚀 TechDiscoverly
+
+![TechDiscoverly Banner](/public/home.png) 
 
 TechDiscoverly is a platform where users can discover and share their favorite tech products. From web apps to AI tools, software, games, and mobile applications, this platform allows users to explore and contribute to a growing collection of innovative products.
 
