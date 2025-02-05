@@ -37,7 +37,7 @@ Experience **TechDiscoverly** live:
 - **Backend:** [TechDiscoverly API](https://tech-discoverly-server.vercel.app) (Node.js, Express)
 - **Authentication:** Firebase
 - **Payments:** Stripe
-- **Database:** Firestore
+- **Database:** MongoDB
 - **Deployment:** Vercel (Frontend), Firebase (Backend)
 
 ## 📦 Installation
