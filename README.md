@@ -93,18 +93,6 @@ Once the project is running:
 - Vote and review existing products.
 - Unlock premium features through Stripe.
 
-## 📡 API Endpoints
-
-| Endpoint                     | Method | Description                           |
-|------------------------------|--------|---------------------------------------|
-| `/products`                  | GET    | Get all products                      |
-| `/products/:id`              | GET    | Get a single product by ID            |
-| `/products`                  | POST   | Submit a new product                  |
-| `/products/:id/vote`         | PATCH  | Upvote or downvote a product          |
-| `/products/:id/reviews`      | POST   | Add a review to a product             |
-| `/auth/register`             | POST   | Register a new user                   |
-| `/auth/login`                | POST   | Log in an existing user               |
-| `/subscriptions/create`      | POST   | Create a new Stripe subscription      |
 
 ## 🤝 Contributing
 
