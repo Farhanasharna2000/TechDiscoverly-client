@@ -104,7 +104,6 @@ We welcome contributions! To contribute:
 5. Open a Pull Request.
 
 
-
 🎉 **Enjoy using TechDiscoverly!**
-```
+
 
