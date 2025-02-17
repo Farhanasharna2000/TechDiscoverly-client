@@ -15,7 +15,7 @@ const Dashboard = () => {
     <div className="flex">
      
       {/* dashboard side bar */}
-      <div className="md:w-64 w-36 min-h-screen bg-[#D39D55] text-white">
+      <div className="md:w-64 w-36 min-h-screen  bg-[#6699CC] text-white">
         <ul className="menu md:p-4">
           <>
             {/* User */}

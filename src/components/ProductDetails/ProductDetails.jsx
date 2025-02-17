@@ -8,6 +8,7 @@ import StarRatingComponent from "react-star-rating-component";
 import toast from "react-hot-toast";
 import { HiOutlineExternalLink } from "react-icons/hi";
 import { Helmet } from "react-helmet-async";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 
 const ProductDetails = () => {
@@ -15,7 +16,7 @@ const ProductDetails = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const [description, setDescription] = useState("");
-  const axiosSecure = UseAxiosSecure();
+  const axiosPublic = useAxiosPublic ();
 
   // Rating state
   const [rating, setRating] = useState(0);
@@ -31,7 +32,7 @@ const ProductDetails = () => {
   } = useQuery({
     queryKey: ['product', id],
     queryFn: async () => {
-      const { data } = await axiosSecure(`/product/${id}`);
+      const { data } = await axiosPublic(`/product/${id}`);
       return data;
     },
   });
@@ -44,7 +45,7 @@ const ProductDetails = () => {
   } = useQuery({
     queryKey: ['reviews', id],
     queryFn: async () => {
-      const { data } = await axiosSecure(`/reviews/${id}`);
+      const { data } = await axiosPublic(`/reviews/${id}`);
       return data;
     },
   });
@@ -59,7 +60,7 @@ const ProductDetails = () => {
     };
   
     try {
-      await axiosSecure.post('/reports', reportData);
+      await axiosPublic.post('/reports', reportData);
       toast.success('Report Added Successfully!');
     } catch (error) {
       toast.error('You have already reported this product.');
@@ -83,7 +84,7 @@ const ProductDetails = () => {
     };
 
     try {
-      await axiosSecure.post('/reviews', reviewData);
+      await axiosPublic.post('/reviews', reviewData);
       toast.success('Review Added Successfully!');
       setDescription('');
       setRating(0);
@@ -102,7 +103,7 @@ const ProductDetails = () => {
     }
 
     try {
-      const response = await axiosSecure.post(`/upvote/${productId}`, {
+      const response = await axiosPublic.post(`/upvote/${productId}`, {
         email: user?.email,
       });
 
@@ -149,9 +150,10 @@ const ProductDetails = () => {
               />
               <span>{product.upvoteCount}</span>
             </button>
-            <Link to={product.link}>
+            <Link to={product.link}  target="_blank">
               <button
                 type="submit"
+                
                 className="px-4 py-2 w-full flex items-center gap-2 rounded md:w-auto bg-[#8D0B41] hover:bg-[#D39D55] text-white"
               >
                 <span> <HiOutlineExternalLink /> </span> View Link
