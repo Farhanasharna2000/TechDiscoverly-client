@@ -44,7 +44,7 @@ const Statistics = () => {
   ];
 
   return (
-    <div className="container mx-auto md:pt-12 pt-3 md:px-5">
+    <div className="container mx-auto md:pt-20 pt-16 md:px-5">
         <Helmet>
         <title> TechDiscoverly | Dashboard | Statistics</title>
       </Helmet>
@@ -77,7 +77,7 @@ const Statistics = () => {
         </div>
       </div>
       <div>
-        <ResponsiveContainer width="100%" height={400}>
+        <ResponsiveContainer width="100%" height={300}>
           <PieChart>
             <Pie
               data={pieChartData}

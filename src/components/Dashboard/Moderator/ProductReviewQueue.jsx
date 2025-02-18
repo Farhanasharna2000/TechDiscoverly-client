@@ -29,6 +29,7 @@ const ProductReviewQueue = () => {
           <Helmet>
         <title> TechDiscoverly | Dashboard | Product Review Queue</title>
       </Helmet>
+      
          <h2 className="text-xl md:text-3xl  text-[#8D0B41] font-bold pt-6 flex items-center gap-2"><span><FaStreetView/></span> Total Products : {reviewProducts.length}</h2>
     <div className='my-6 overflow-x-auto shadow rounded-lg '>
               

@@ -23,6 +23,7 @@ import ManageCoupons from "../components/Dashboard/Admin/ManageCoupons";
 import ProductDetails from "../components/ProductDetails/ProductDetails";
 import Advertise from "../pages/Advertise/Advertise";
 import About from "../pages/About/About";
+import Overview from "../components/Dashboard/User/Overview/Overview";
 
 
 export const router = createBrowserRouter([
@@ -72,6 +73,12 @@ export const router = createBrowserRouter([
         path: 'my-profile',
         element: <PrivateRoute>
           <MyProfile/>
+        </PrivateRoute>
+      },
+      {
+        path: 'overview',
+        element: <PrivateRoute>
+          <Overview/>
         </PrivateRoute>
       },
       {

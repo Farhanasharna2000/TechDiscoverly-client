@@ -90,7 +90,7 @@ const navigate=useNavigate()
   };
 
   return (
-    <div className="container mx-auto px-4 md:px-8 mb-6 md:mb-8">
+    <div className="container mx-auto px-4 pt-10 md:px-8 mb-6 md:mb-8">
         <Helmet>
         <title> TechDiscoverly | Dashboard | Add Products</title>
       </Helmet>

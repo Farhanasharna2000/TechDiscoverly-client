@@ -33,7 +33,7 @@ const MyProducts = () => {
         <title> TechDiscoverly | Dashboard | My Products</title>
       </Helmet>
       <div className="container mx-auto px-4  ">
-  <h2 className="text-xl md:text-3xl  text-[#8D0B41] font-bold pt-6 flex items-center gap-2">
+  <h2 className="text-xl md:text-3xl  text-[#8D0B41] font-bold pt-20 flex items-center gap-2">
     My Products : {products.length}
   </h2>
   <div className='my-6 overflow-x-auto shadow rounded-lg '>

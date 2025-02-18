@@ -148,7 +148,7 @@ const ManageCoupons = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 md:p-6">
+    <div className="container mx-auto md:pt-20 pt-16 px-4">
         <Helmet>
         <title> TechDiscoverly | Dashboard | Manage Coupons</title>
       </Helmet>

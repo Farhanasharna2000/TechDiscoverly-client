@@ -26,11 +26,11 @@ const ManageUsers = () => {
     if (isLoading) return <LoadingSpinner />
     return (
       <>
-        <div className='container mx-auto px-4 '>
+        <div className='container mx-auto md:pt-20 pt-16 px-4 '>
         <Helmet>
         <title> TechDiscoverly | Dashboard | Manage Users</title>
       </Helmet>
-          <h2 className="text-xl md:text-3xl  text-[#8D0B41] font-bold pt-6 flex items-center gap-2"><span><FaUsers/></span> Total Users : {users.length}</h2>
+          <h2 className="text-xl md:text-3xl  text-[#8D0B41] font-bold  flex items-center gap-2"><span><FaUsers/></span> Total Users : {users.length}</h2>
               <div className='my-6 overflow-x-auto shadow rounded-lg '>
               
                 <table className='table table-xs table-pin-rows table-pin-cols'>
