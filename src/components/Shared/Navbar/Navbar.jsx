@@ -33,6 +33,16 @@ const Navbar = () => {
     </NavLink>
   </li>
 
+  <li>
+    <NavLink
+      to="/advertise"
+      className={({ isActive }) =>
+        `font-extrabold hover:bg-[#D39D55] hover:text-white ${isActive ? "text-[#8D0B41]" : ""}`
+      }
+    >
+      Advertise
+    </NavLink>
+  </li>
   {user && (
     <li>
       <NavLink
@@ -111,6 +121,26 @@ const Navbar = () => {
                       className='block md:hidden px-4 py-3  transition font-semibold'
                     >
                       Products
+                    </Link>
+                    <Link
+                      to="/advertise"
+                      className='block md:hidden px-4 py-3  transition font-semibold'
+                    >
+                      Advertise
+                    </Link>
+                    <Link
+                     to={
+                      role === "User"
+                        ? "/dashboard/my-profile"
+                        : role === "Moderator"
+                        ? "/dashboard/product-review-queue"
+                        : role === "Admin"
+                        ? "/dashboard/statistics"
+                        : "/dashboard"
+                    }
+                      className='block md:hidden px-4 py-3  transition font-semibold'
+                    >
+                          Dashboard
                     </Link>
 
                     {user ? (

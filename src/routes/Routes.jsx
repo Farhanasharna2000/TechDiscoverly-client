@@ -21,6 +21,7 @@ import AdminRoute from "./AdminRoute";
 import Statistics from "../components/Dashboard/Admin/Statistics ";
 import ManageCoupons from "../components/Dashboard/Admin/ManageCoupons";
 import ProductDetails from "../components/ProductDetails/ProductDetails";
+import Advertise from "../pages/Advertise/Advertise";
 
 
 export const router = createBrowserRouter([
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
         element: 
           <ProductDetails />
         ,
+      },
+      {
+        path: '/advertise',
+        element: <Advertise />,
       },
       {
          path: '/login', 
