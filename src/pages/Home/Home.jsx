@@ -5,6 +5,7 @@ import Banner from "../../components/Banner/Banner"
 import NewsLetter from "../../components/NewsLetter/NewsLetter"
 import FAQ from './../../components/FAQ/FAQ';
 import Testimonial from './../../components/Testimonial/Testimonial';
+import Trusted from "../../components/Trusted/Trusted"
 
 
 
@@ -26,6 +27,7 @@ const Home = () => {
      <Testimonial/>
      <FAQ/>
      <NewsLetter/>
+     <Trusted/>
     </div>
   )
 }

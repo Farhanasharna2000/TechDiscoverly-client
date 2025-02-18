@@ -28,7 +28,7 @@ const NewsLetter = () => {
     };
 
     return (
-        <div className="md:pb-16 md:pt-6 border-t-[1px]">
+        <div className="md:pb-16 md:pt-6 border-y-[1px]">
              <SectionTitle
 
 heading="Subscribe for Product Updates"
