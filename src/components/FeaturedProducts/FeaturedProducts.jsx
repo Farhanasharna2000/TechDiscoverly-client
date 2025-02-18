@@ -69,7 +69,7 @@ const FeaturedProducts = () => {
                             <img
                                 src={product.productImage}
                                 alt={product.productName}
-                                className="w-full h-56 rounded-t-lg"
+                                className="w-full h-44 rounded-t-lg"
                             />
                         </div>
 
