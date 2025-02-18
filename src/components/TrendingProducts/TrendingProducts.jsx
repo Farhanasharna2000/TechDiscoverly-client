@@ -63,7 +63,7 @@ const TrendingProducts = () => {
                 {trendingProducts.map((product) => (
                     <div key={product.id} className="flex flex-col bg-white rounded-lg p-4 shadow-md">
                         {/* Card Header */}
-                        <div className="">
+                        <div >
                             <img
                                 src={product.productImage}
                                 alt={product.productName}

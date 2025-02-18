@@ -22,6 +22,7 @@ import Statistics from "../components/Dashboard/Admin/Statistics ";
 import ManageCoupons from "../components/Dashboard/Admin/ManageCoupons";
 import ProductDetails from "../components/ProductDetails/ProductDetails";
 import Advertise from "../pages/Advertise/Advertise";
+import About from "../pages/About/About";
 
 
 export const router = createBrowserRouter([
@@ -47,6 +48,10 @@ export const router = createBrowserRouter([
       {
         path: '/advertise',
         element: <Advertise />,
+      },
+      {
+        path: '/about',
+        element: <About />,
       },
       {
          path: '/login', 

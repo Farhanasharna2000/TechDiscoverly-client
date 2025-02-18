@@ -29,14 +29,14 @@ const Advertise = () => {
         },
       ];
     return (
-        <div className="container mx-auto md:px-4 md:pt-32 mb-10">
+        <div className="container mx-auto md:px-4 md:pt-28 pt-4 mb-5 md:mb-10">
             <div className="container mx-auto flex flex-col md:flex-row items-center mb-8">
                 {/* Left Content */}
                 <div className="md:w-1/2 text-center md:text-left">
-                    <h2 className="text-4xl font-bold text-[#8D0B41] ">
+                    <h2 className="md:text-4xl text-xl font-extrabold text-[#8D0B41] ">
                         Reach millions of <br /> early adopters
                     </h2>
-                    <p className=" mt-4">
+                    <p className=" md:mt-4">
                         Our advertising options will help you build traction with the most influential
                         early adopters on the web.
                     </p>
@@ -58,47 +58,47 @@ const Advertise = () => {
                 </div>
             </div>
           
-      <div >
+      <div className="mx-4 md:mx-0">
         {/* Title */}
         
-        <h2 className="md:text-4xl text-xl md:pt-8 py-4 text-center text-[#8D0B41] font-extrabold">Find new customers</h2>
-        <p className=" max-w-2xl text-center mx-auto">
+        <h2 className="md:text-4xl text-xl md:pt-8 md:pb-3 pb-1  text-center text-[#8D0B41] font-extrabold">Find new customers</h2>
+        <p className=" md:max-w-2xl md:text-base text-sm text-center mx-auto">
           Advertising on Product Hunt helps you grow awareness, trials, and usage of your
           product by reaching millions of the most influential early adopters and techies
           around the globe.
         </p>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 text-center gap-6 mt-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 text-center gap-4 md:gap-6 mt-5 md:mt-8">
           {stats.map((stat, index) => (
             <div
               key={index}
               className="border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition"
             >
-              <h3 className="text-xl font-semibold text-[#8D0B41]">{stat.title}</h3>
-              <p className="text-gray-700 mt-1">{stat.description}</p>
+              <h3 className="md:text-lg font-semibold text-[#8D0B41]">{stat.title}</h3>
+              <p className="md:text-base text-sm mt-1">{stat.description}</p>
             </div>
           ))}
         </div>
       </div>
-            <div >
+            <div className="mx-4 md:mx-0">
         {/* Heading */}
-        <h2 className="md:text-4xl text-xl md:pt-8 py-4 text-center text-[#8D0B41] font-extrabold">Connect with our community</h2>
-        <p className=" md:max-w-2xl text-center mx-auto">
+        <h2 className="md:text-4xl text-xl md:pt-8 md:pb-3 pb-1 pt-5 text-center text-[#8D0B41] font-extrabold">Connect with our community</h2>
+        <p className=" md:max-w-2xl md:text-base text-sm text-center mx-auto">
         Work with our dedicated team to gain awareness with our most engaged users by
         creating a custom package of advertising options.
         </p>
 
 
         {/* Info Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mt-4 md:mt-8">
           {options.map((option, index) => (
             <div
               key={index}
               className="border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition text-left"
             >
               <h3 className="md:text-lg text-[#8D0B41]  font-semibold ">{option.title}</h3>
-              <p className=" mt-2">{option.description}</p>
+              <p className="md:text-base text-sm mt-1">{option.description}</p>
             </div>
           ))}
         </div>

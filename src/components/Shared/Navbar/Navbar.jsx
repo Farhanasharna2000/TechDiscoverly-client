@@ -43,6 +43,17 @@ const Navbar = () => {
       Advertise
     </NavLink>
   </li>
+  
+  <li>
+    <NavLink
+      to="/about"
+      className={({ isActive }) =>
+        `font-extrabold hover:bg-[#D39D55] hover:text-white ${isActive ? "text-[#8D0B41]" : ""}`
+      }
+    >
+     About
+    </NavLink>
+  </li>
   {user && (
     <li>
       <NavLink
@@ -127,6 +138,12 @@ const Navbar = () => {
                       className='block md:hidden px-4 py-3  transition font-semibold'
                     >
                       Advertise
+                    </Link>
+                    <Link
+                      to='/about'
+                      className='block md:hidden px-4 py-3  transition font-semibold'
+                    >
+                     About
                     </Link>
                     <Link
                      to={
