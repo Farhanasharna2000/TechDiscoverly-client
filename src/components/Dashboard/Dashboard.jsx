@@ -46,6 +46,12 @@ const Dashboard = () => {
             {role === "Admin" && (
               <>
                 <li>
+                  <NavLink to="/dashboard/my-profile">
+                    <FaUser className="md:text-xl" />
+                    My Profile
+                  </NavLink>
+                </li>
+                <li>
                   <NavLink to="/dashboard/statistics">
                     <IoStatsChart className="md:text-xl" />
                     Statistics
@@ -70,6 +76,13 @@ const Dashboard = () => {
             {role === "Moderator" && (
               <>
                 <li>
+                  <NavLink to="/dashboard/my-profile">
+                    <FaUser className="md:text-xl" />
+                    My Profile
+                  </NavLink>
+                </li>
+                <li>
+                  
                   <NavLink to="/dashboard/product-review-queue">
                     <MdRateReview className="md:text-xl" />
                     Product Review Queue

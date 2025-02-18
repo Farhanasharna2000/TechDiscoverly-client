@@ -48,7 +48,7 @@ const Coupon = () => {
   return (
     <div className=" mx-8 md:mx-0">
       {trendingCoupons.length > 0 ? (
-        <Slider {...settings} className="pb-8 md:w-1/2  mx-auto">
+        <Slider {...settings} className=" md:w-1/2  mx-auto">
 
 
           {

@@ -11,35 +11,52 @@ const Navbar = () => {
   const [role]=useRole()
   const links =
   <>
+  <li>
+    <NavLink
+      to="/"
+      className={({ isActive }) =>
+        `font-extrabold hover:bg-[#D39D55] hover:text-white ${isActive ? "text-[#8D0B41]" : ""}`
+      }
+    >
+      Home
+    </NavLink>
+  </li>
 
-      <li>
-          <NavLink
-              className={({ isActive }) =>
-                  `font-extrabold hover:bg-[#D39D55] hover:text-white ${isActive ?
-                      " text-[#8D0B41]" :
-                      
-                      " "}`
-              }
-              to="/"
-          >
-              Home
-          </NavLink>
-      </li>
-    
-      <li>
-          <NavLink
-              className={({ isActive }) =>
-                  `font-extrabold  hover:bg-[#D39D55] hover:text-white  ${isActive ?
-                      " text-[#8D0B41]" :
-                      
-                      " "}`
-              }
-              to="/products"
-          >
-             Products
-          </NavLink>
-      </li>
-  </>
+  <li>
+    <NavLink
+      to="/products"
+      className={({ isActive }) =>
+        `font-extrabold hover:bg-[#D39D55] hover:text-white ${isActive ? "text-[#8D0B41]" : ""}`
+      }
+    >
+      Products
+    </NavLink>
+  </li>
+
+  {user && (
+    <li>
+      <NavLink
+        to={
+          role === "User"
+            ? "/dashboard/my-profile"
+            : role === "Moderator"
+            ? "/dashboard/product-review-queue"
+            : role === "Admin"
+            ? "/dashboard/statistics"
+            : "/dashboard"
+        }
+        className={({ isActive }) =>
+          `px-4 py-2 font-semibold transition hover:text-white hover:bg-[#D39D55] ${
+            isActive ? "text-[#8D0B41]" : ""
+          }`
+        }
+      >
+        Dashboard
+      </NavLink>
+    </li>
+  )}
+</>
+
   return (
     <div className='md:fixed  z-10 bg-white shadow-md w-full'>
     <div className=''>
@@ -98,24 +115,11 @@ const Navbar = () => {
 
                     {user ? (
                       <>
-                      <div className='px-4 py-3  transition cursor-default  text-[#8D0B41] hidden md:block font-bold'> {user?.displayName || "Hello, User!"}</div>
-                        <Link
-                         to={
-                          role === 'User'
-                            ? '/dashboard/my-profile'
-                            : role === 'Moderator'
-                            ? '/dashboard/product-review-queue'
-                            : role === 'Admin'
-                            ? '/dashboard/statistics'
-                            : '/dashboard' 
-                        }
-                          className='px-4 py-2 hover:text-white hover:bg-[#D39D55]   transition font-semibold'
-                        >
-                          Dashboard
-                        </Link>
+                      <div className='px-4 py-3 text-center transition cursor-default  text-[#8D0B41] hidden md:block font-bold'> {user?.displayName || "Hello, User!"}</div>
+                      
                         <div
                           onClick={logOut}
-                          className='px-4 py-2 hover:text-white hover:bg-[#D39D55]  transition font-semibold cursor-pointer'
+                          className='px-4 py-2 hover:text-white hover:bg-[#D39D55] text-center transition font-semibold cursor-pointer'
                         >
                           Logout
                         </div>
