@@ -59,30 +59,29 @@ const TrendingProducts = () => {
 
                 heading="Trending Products"
             />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-4 md:mx-0 gap-4 md:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mx-4 md:mx-0 gap-4 md:gap-6">
                 {trendingProducts.map((product) => (
-                    <div key={product.id} className="flex flex-col bg-white rounded-lg p-4 md:p-8 shadow-md">
+                    <div key={product.id} className="flex flex-col bg-white rounded-lg p-4 shadow-md">
                         {/* Card Header */}
                         <div className="">
                             <img
                                 src={product.productImage}
                                 alt={product.productName}
-                                className="w-full  h-56 rounded-lg"
+                                className="w-full  h-40 rounded-lg"
                             />
                         </div>
 
                         {/* Card Content */}
                         <div className="flex-grow ">
-                            <Link to={`/productDetails/${product._id}`}>
-                                <button
+                        <button
 
-                                    className="md:text-lg mt-4 font-semibold hover:text-[#8D0B41] hover:underline"
-                                >
-                                    {product.productName}
-                                </button>
-                            </Link>
-
-                            <div className="mt-2 flex flex-wrap gap-2">
+className="md:text-lg mt-4 font-semibold "
+>
+{product.productName}
+</button>
+                            
+                            <p className="text-sm md:text-base">{product.description.slice(0, 30)}...</p>
+                            <div className="my-3 flex flex-wrap gap-2">
                                 {product.tags.map((tag) => (
                                     <span
                                         key={tag}
@@ -95,10 +94,12 @@ const TrendingProducts = () => {
                         </div>
 
                         {/* Card Footer */}
-                        <div >
+                        
+                        <div className="flex justify-end gap-2">
                             <button
                                 onClick={() => handleUpvote(product._id)}
-                                className={`w-full flex justify-end gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${product.ownerEmail === user?.email ? 'cursor-not-allowed opacity-50' : ''}`}
+                                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${product.ownerEmail === user?.email ? 'cursor-not-allowed opacity-50' : ''
+                                    }`}
                                 disabled={product.ownerEmail === user?.email}
                             >
                                 <img
@@ -108,6 +109,12 @@ const TrendingProducts = () => {
                                 />
                                 <span>{product.upvoteCount}</span>
                             </button>
+                            <Link to={`/productDetails/${product._id}`}>
+                            <button className="px-4 py-2 mt-2 text-sm bg-[#8D0B41] text-white hover:bg-[#D39D55] rounded-lg">See More</button>
+
+                            </Link>
+                           
+
                         </div>
 
                     </div>
@@ -120,7 +127,7 @@ const TrendingProducts = () => {
                     </button>
                 </Link>
             </div>
-            <Coupon/>
+            <Coupon />
         </div>
     );
 };

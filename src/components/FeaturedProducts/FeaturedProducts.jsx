@@ -11,7 +11,7 @@ import toast from "react-hot-toast";
 
 
 const FeaturedProducts = () => {
-    
+
     const axiosPublic = useAxiosPublic()
     const { user } = useAuth()
     const navigate = useNavigate()
@@ -28,7 +28,7 @@ const FeaturedProducts = () => {
             return data
         },
     })
-   
+
     if (isLoading) return <LoadingSpinner />
 
     const handleUpvote = async (productId) => {
@@ -54,7 +54,6 @@ const FeaturedProducts = () => {
     };
 
 
-
     return (
 
         <div className="container mx-auto md:px-4">
@@ -76,15 +75,14 @@ const FeaturedProducts = () => {
 
                         {/* Card Content */}
                         <div className="flex-grow p-4">
-                            <Link to={`/productDetails/${product._id}`}>
-                                <button
+                            <button
 
-                                    className="md:text-lg font-semibold hover:text-[#8D0B41] hover:underline"
-                                >
-                                    {product.productName}
-                                </button>
-                            </Link>
+                                className="md:text-lg font-semibold "
+                            >
+                                {product.productName}
+                            </button>
 
+                            <p className="text-sm md:text-base">{product.description.slice(0, 30)}...</p>
                             <div className="mt-2 flex flex-wrap gap-2">
                                 {product.tags.map((tag) => (
                                     <span
@@ -98,11 +96,11 @@ const FeaturedProducts = () => {
                         </div>
 
                         {/* Card Footer */}
-                        <div className="p-4 pt-0">
-                       
+                        <div className="p-4 pt-0 flex justify-end gap-2">
                             <button
                                 onClick={() => handleUpvote(product._id)}
-                                className={`w-full flex justify-end gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${product.ownerEmail === user?.email ? 'cursor-not-allowed opacity-50' : ''}`}
+                                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${product.ownerEmail === user?.email ? 'cursor-not-allowed opacity-50' : ''
+                                    }`}
                                 disabled={product.ownerEmail === user?.email}
                             >
                                 <img
@@ -112,10 +110,16 @@ const FeaturedProducts = () => {
                                 />
                                 <span>{product.upvoteCount}</span>
                             </button>
-                        </div>
+                            <Link to={`/productDetails/${product._id}`}>
+
+                                <button className="px-4 py-2 mt-2 text-sm bg-[#8D0B41] text-white hover:bg-[#D39D55] rounded-lg">See More</button>
+                            </Link>
 
                         </div>
-                   
+
+
+                    </div>
+
                 ))}
             </div>
         </div>
