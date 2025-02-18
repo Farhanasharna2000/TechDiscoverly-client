@@ -15,7 +15,7 @@ const Products = () => {
     const [inputTag, setInputTag] = useState("");
     const [searchTag, setSearchTag] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
-    const limit = 6; // Products per page
+    const limit = 8; // Products per page
 const navigate=useNavigate()
     const {
         data: productsData,
@@ -120,25 +120,25 @@ const navigate=useNavigate()
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-6">
                 {products.map((product) => (
-                    <div key={product._id} className="flex flex-col bg-white rounded-lg p-4 m-4 md:m-0 md:p-8 shadow-md">
+                    <div key={product._id} className="flex flex-col bg-white rounded-lg p-4 m-4 md:m-0  shadow-md">
                         <div className="">
                             <img
                                 src={product.productImage}
                                 alt={product.productName}
-                                className="w-full h-56 rounded-lg"
+                                className="w-full h-40 rounded-lg"
                             />
                         </div>
 
                         <div className="flex-grow">
-                            <Link to={`/productDetails/${product._id}`}>
-                                <button className="md:text-lg mt-4 hover:underline font-semibold hover:text-[#8D0B41]">
+                         
+                                <button className="md:text-lg mt-4  font-semibold ">
                                     {product.productName}
                                 </button>
-                            </Link>
-
-                            <div className="mt-2 flex flex-wrap gap-2">
+                       
+                            <p className="text-sm md:text-base ">{product.description.slice(0, 30)}...</p>
+                            <div className="my-2 flex flex-wrap gap-2">
                                 {product.tags.map((tag) => (
                                     <span
                                         key={tag}
@@ -149,12 +149,11 @@ const navigate=useNavigate()
                                 ))}
                             </div>
                         </div>
-
-                        <div >
-                    
+                        <div className="flex justify-end gap-2">
                             <button
                                 onClick={() => handleUpvote(product._id)}
-                                className={`w-full flex justify-end gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${product.ownerEmail === user?.email ? 'cursor-not-allowed opacity-50' : ''}`}
+                                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${product.ownerEmail === user?.email ? 'cursor-not-allowed opacity-50' : ''
+                                    }`}
                                 disabled={product.ownerEmail === user?.email}
                             >
                                 <img
@@ -164,7 +163,14 @@ const navigate=useNavigate()
                                 />
                                 <span>{product.upvoteCount}</span>
                             </button>
+                            <Link to={`/productDetails/${product._id}`}>
+                            <button className="px-4 py-2 mt-2 text-sm bg-[#8D0B41] text-white hover:bg-[#D39D55] rounded-lg">See More</button>
+
+                            </Link>
+                           
+
                         </div>
+                      
                     </div>
                 ))}
             </div>
