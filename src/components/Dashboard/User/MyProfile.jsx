@@ -113,7 +113,7 @@ const MyProfile = () => {
         <title>TechDiscoverly | Dashboard | My Profile</title>
       </Helmet>
 
-      <div className="flex bg-gray-50 shadow-xl md:px-32 m-4 md:m-0 px-4 py-4 md:py-16 flex-col justify-center items-center">
+      <div className="flex  m-4 md:m-0  flex-col justify-center items-center">
         <img
           src={userData.photo}
           alt="User Profile"
