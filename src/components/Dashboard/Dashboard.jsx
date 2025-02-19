@@ -99,7 +99,7 @@ const Dashboard = () => {
         <div className="bg-white p-4 shadow-lg ml-[20%] md:px-8 fixed top-0 left-0 right-0 z-10">
           <div className="flex justify-end items-center">
             <NavLink to="/dashboard/my-profile" className="space-x-2">
-              <FaUser className="text-xl rounded-full" />
+              <FaUser className="text-4xl rounded-full border p-2" />
             </NavLink>
           </div>
         </div>
