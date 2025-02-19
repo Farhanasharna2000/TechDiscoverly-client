@@ -26,7 +26,33 @@ const MyProfile = () => {
   const photoRef = useRef(null);
   const phoneRef = useRef(null);
   const addressRef = useRef(null);
+  const handleCouponChange = (e) => {
+    setCoupon(e.target.value);
+  };
 
+  const applyCoupon = async () => {
+    try {
+      const response = await axiosSecure.post("/validate-coupon", { couponCode: coupon });
+      const { discount } = response.data;
+      const newPayment = payment - payment * (discount / 100);
+      setPayment(newPayment);
+      Swal.fire({
+        title: "Coupon Applied!",
+        text: `You get ${discount}% off. Total: $${newPayment}`,
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+      setCoupon("");
+    } catch (error) {
+      Swal.fire({
+        title: "Error!",
+        text: error.response?.data?.message || "Failed to apply coupon",
+        icon: "error",
+        confirmButtonText: "Try Again",
+      });
+      setCoupon("");
+    }
+  };
   const { data: userData = {}, refetch } = useQuery({
     queryKey: ["users", user?.email],
     queryFn: async () => {
@@ -81,18 +107,55 @@ const MyProfile = () => {
         <title>TechDiscoverly | Dashboard | My Profile</title>
       </Helmet>
 
-      <div className="flex flex-col items-center w-full max-w-md">
+      <div className="flex flex-col m-4 md:m-0 justify-center items-center">
         <img
           src={userData?.photo || "/default-avatar.png"}
           alt="User Profile"
-          className="w-24 h-24 md:w-28 md:h-28 rounded-full"
+          className="md:w-28 w-10 h-10 md:h-28 rounded-full"
         />
-        <div className="text-center space-y-2 mt-4">
+        <div className="text-center space-y-1">
+          <p className="md:text-2xl text-[#8D0B41] font-bold badge badge-secondary p-2 md:p-4 uppercase bg-white">
+            {role}
+          </p>
+          </div>
+        <div className="text-center mt-4">
           <h1 className="text-lg md:text-2xl font-bold uppercase">{userData?.name}</h1>
           <p className="text-sm md:text-lg text-gray-700">{userData?.email}</p>
           <p className="text-sm md:text-lg text-gray-700">{userData?.phone || 'Number:'}</p>
           <p className="text-sm md:text-lg text-gray-700">{userData?.address || "Address:"}</p>
         </div>
+        {role === "User" && (
+          <div className="mt-8">
+            {!userData?.isSubscribed ? (
+              <div>
+                <div className="flex flex-col sm:flex-row items-center sm:space-x-2 space-y-2 sm:space-y-0 mb-4">
+                  <input
+                    type="text"
+                    value={coupon}
+                    onChange={handleCouponChange}
+                    placeholder="Enter coupon code"
+                    className="border p-2 rounded flex-grow text-[#8D0B41]"
+                  />
+                  <button
+                    onClick={applyCoupon}
+                    className="px-6 py-3 bg-[#8D0B41] text-white hover:bg-[#D39D55] font-semibold text-center rounded"
+                  >
+                    Apply Coupon
+                  </button>
+                  <button
+                    onClick={() => toggleModal("payment", true)}
+                    className="px-6 py-3 bg-[#8D0B41] text-white hover:bg-[#D39D55] font-semibold text-center rounded"
+                  >
+                    ${payment} Subscribe Now
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <p className="text-green-800 font-bold text-center sm:text-left">Status: Verified</p>
+            )}
+          </div>
+        )}
+
 
         <div className="mt-6">
           <button
@@ -121,6 +184,11 @@ const MyProfile = () => {
             </form>
           </div>
         </div>
+      )}
+        {modalState.payment && (
+        <Elements stripe={stripePromise}>
+          <PaymentModal closeModal={() => toggleModal("payment", false)} isOpen={modalState.payment} refetch={refetch} userData={userData} payment={payment} />
+        </Elements>
       )}
     </div>
   );
