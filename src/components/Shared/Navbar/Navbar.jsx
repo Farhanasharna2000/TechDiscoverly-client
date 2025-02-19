@@ -86,7 +86,7 @@ const Navbar = () => {
 </>
 
   return (
-    <div className='md:fixed  z-10 bg-white shadow-md w-full'>
+    <div className={`md:fixed z-10 w-full shadow-md transition-colors duration-300 ${theme === 'dark' ? 'bg-gray-800 text-[#EAEAEA]' : 'bg-white text-black'}`}>
     <div >
       <div className="navbar container mx-auto  ">
         <div className="navbar-start">
