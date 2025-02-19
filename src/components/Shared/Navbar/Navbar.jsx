@@ -5,10 +5,17 @@ import useAuth from '../../../hooks/useAuth'
 import { AiOutlineMenu } from 'react-icons/ai'
 import useRole from '../../../hooks/useRole'
 import logo from '../../../assets/logotech.png'
+import { useTheme } from '../../../hooks/UseTheme'
+import { FiMoon, FiSun } from 'react-icons/fi'
 const Navbar = () => {
   const { user, logOut } = useAuth()
   const [isOpen, setIsOpen] = useState(false)
   const [role]=useRole()
+  const { theme, setTheme } = useTheme();
+
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
   const links =
   <>
   <li>
@@ -92,7 +99,18 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex ">
           <ul className="menu menu-horizontal px-1 ">{links}</ul>
         </div>
+
         <div className="navbar-end">
+        <button
+            onClick={toggleTheme}
+            className="btn btn-ghost rounded-full p-2 ml-3"
+          >
+            {theme === 'light' ? (
+              <FiMoon className="text-2xl text-[#8D0B41]" />
+            ) : (
+              <FiSun className="text-2xl text-yellow-300" />
+            )}
+          </button>
           {user?.email ? (
             <div className="flex gap-3 items-center">
                {/* Dropdown Menu */}
