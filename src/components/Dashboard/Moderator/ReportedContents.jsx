@@ -26,7 +26,7 @@ const ReportedContents = () => {
   
     if (isLoading) return <LoadingSpinner />
     return (
-        <div className="container mx-auto px-4 ">
+        <div className="container mx-auto px-4 md:pt-16 pt-10">
             <Helmet>
         <title> TechDiscoverly | Dashboard | Reported Contents</title>
       </Helmet>
