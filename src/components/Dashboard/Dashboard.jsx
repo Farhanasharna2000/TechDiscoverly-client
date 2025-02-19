@@ -103,6 +103,7 @@ const Dashboard = () => {
       <div className="flex-1  ml-[35%] md:ml-[20%]">
         {/* Navbar at the top of the content area */}
         <div className="bg-white px-4 py-2 shadow-lg ml-[20%] md:px-8 fixed top-0 left-0 right-0 z-10">
+          
           <div className="flex justify-end items-center">
             <NavLink to="/dashboard/my-profile" className="space-x-2">
               <FaUser className="text-4xl rounded-full border p-2" />

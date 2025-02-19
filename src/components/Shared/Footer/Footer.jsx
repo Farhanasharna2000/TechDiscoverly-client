@@ -2,9 +2,13 @@ import { FaFacebook, FaLinkedin } from "react-icons/fa"
 import { IoLogoWhatsapp } from "react-icons/io"
 import { Link } from "react-router-dom"
 import logo from '../../../assets/logotech.png'
+import { useTheme } from "../../../hooks/UseTheme"
 const Footer = () => {
+  const { theme } = useTheme();
   return (
-    <footer className=' bg-[#D6CFB4]/40 '>
+      <footer className={`pb-10 ${theme === 'light' ? 'bg-[#D6CFB4]/40 ' : 'bg-gray-800 text-white'}`}>
+
+    
       <div className="container px-4 md:px-0 pt-6 mx-auto ">
         {/* Logo */}
         <img className="mx-auto w-64" src={logo} alt=" Logo" />
